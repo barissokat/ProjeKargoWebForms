@@ -15,7 +15,16 @@ namespace ProjeKargoWebForms
         private KargoContext db = new KargoContext();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                gvDataBind();
+            }
+        }
+        private void gvDataBind()
+        {
+            var subeler = from s in db.Subeler select s;
+            GridViewTest.DataSource = subeler.ToList();
+            GridViewTest.DataBind();
         }
     }
 }
