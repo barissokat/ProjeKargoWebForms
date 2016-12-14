@@ -8,10 +8,10 @@ namespace ProjeKargoWebForms.Model
     public class Takip
     {
         public int Id { get; set; }
-        public int AdresId { get; set; }
-        public int AdresId2 { get; set; }
-        public int DurumId { get; set; }
-        public int KargoId { get; set; }
+        public Nullable<int> AdresId { get; set; }
+        public Nullable<int> AdresId2 { get; set; }
+        public Nullable<int> DurumId { get; set; }
+        public Nullable<int> KargoId { get; set; }
         public DateTime GonderimTarihi { get; set; }
         public DateTime AlimTarihi { get; set; }
 
