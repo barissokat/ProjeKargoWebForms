@@ -13,7 +13,7 @@ namespace ProjeKargoWebForms.Model
         }
 
         public int Id { get; set; }
-        public Nullable<int> IlId { get; set; }
+        public int IlId { get; set; }
         public string Ad { get; set; }
 
         public virtual Il Il { get; set; }

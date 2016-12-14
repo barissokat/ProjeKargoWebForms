@@ -13,10 +13,10 @@ namespace ProjeKargoWebForms.Model
         }
 
         public int Id { get; set; }
-        public Nullable<int> Agirlik { get; set; }
-        public Nullable<int> Yukseklik { get; set; }
-        public Nullable<int> En { get; set; }
-        public Nullable<int> Boy { get; set; }
+        public int Agirlik { get; set; }
+        public int Yukseklik { get; set; }
+        public int En { get; set; }
+        public int Boy { get; set; }
 
         public virtual ICollection<Takip> Takip { get; set; }
 

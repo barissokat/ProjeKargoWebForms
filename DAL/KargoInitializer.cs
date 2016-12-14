@@ -23,6 +23,10 @@ namespace ProjeKargoWebForms.DAL
             kuryeciler.ForEach(kuryeci => context.Kuryeciler.Add(kuryeci));
             context.SaveChanges();
 
+            var izmir = new Il { Ad = "İzmir" };
+            context.Iller.Add(izmir);
+            context.SaveChanges();
+
             List<Ilce> ilceler = new List<Ilce>
             {
                 new Ilce { IlId = 1, Ad = "Aliağa"},
@@ -36,9 +40,6 @@ namespace ProjeKargoWebForms.DAL
             ilceler.ForEach(ilce => context.Ilceler.Add(ilce));
             context.SaveChanges();
 
-            var izmir = new Il { Ad = "İzmir" };
-            context.Iller.Add(izmir);
-            context.SaveChanges();
 
             List<Durum> durumlar = new List<Durum>
             {

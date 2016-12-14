@@ -17,8 +17,8 @@ namespace ProjeKargoWebForms.Model
         }
 
         public int Id { get; set; }
-        public Nullable<int> IlId { get; set; }
-        public Nullable<int> IlceId { get; set; }
+        public int IlId { get; set; }
+        public int IlceId { get; set; }
         public string Mahalle { get; set; }
         public string Sokak { get; set; }
         public string Apartman { get; set; }
