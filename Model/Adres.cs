@@ -31,5 +31,5 @@ namespace ProjeKargoWebForms.Model
         public virtual ICollection<Sube> Sube { get; set; }
         public virtual ICollection<Takip> Takip { get; set; }
         public virtual ICollection<Takip> Takip1 { get; set; }
-    T
+    }
 }
