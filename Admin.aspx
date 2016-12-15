@@ -1,7 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="ProjeKargoWebForms.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="GridViewTest" runat="server"></asp:GridView>
+    <asp:GridView ID="gvKargo" runat="server" OnSelectedIndexChanged="gvKargo_SelectedIndexChanged">
+        <Columns>
+            <asp:ButtonField CommandName="Select" Text="Seç" />
+        </Columns>
+        <EmptyDataTemplate>
+            Herhangi bir kargo bulunamadı..
+        </EmptyDataTemplate>
+    </asp:GridView>
     <table style="width: 100%;">
         <tr>
             <td>
@@ -213,7 +220,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnKargo" runat="server" Text="Kargo Ekle" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()" />
+                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()" />
             </td>
             <td>
                 <asp:Label ID="lblSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
