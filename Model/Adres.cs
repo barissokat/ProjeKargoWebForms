@@ -13,7 +13,6 @@ namespace ProjeKargoWebForms.Model
             this.KuryeCagir = new HashSet<KuryeCagir>();
             this.Sube = new HashSet<Sube>();
             this.Takip = new HashSet<Takip>();
-            this.Takip1 = new HashSet<Takip>();
         }
 
         public int Id { get; set; }
@@ -30,6 +29,5 @@ namespace ProjeKargoWebForms.Model
         public virtual ICollection<KuryeCagir> KuryeCagir { get; set; }
         public virtual ICollection<Sube> Sube { get; set; }
         public virtual ICollection<Takip> Takip { get; set; }
-        public virtual ICollection<Takip> Takip1 { get; set; }
     }
 }
