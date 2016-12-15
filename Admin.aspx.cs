@@ -33,8 +33,9 @@ namespace ProjeKargoWebForms
                 ddlaIl.DataBind();
                 ddlaIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
                 ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+
+                gvKargoDataBind();
             }
-            gvKargoDataBind();
         }
         private void gvKargoDataBind()
         {
@@ -260,7 +261,6 @@ namespace ProjeKargoWebForms
 
                     lblSonuc.Text = "Kargo başarıyla eklendi.";
                 }
-                /*Güncellemede ilçe seçimi işe yaramıyor    */
                 else
                 {
                     int tid = Convert.ToInt32(tbTakipId.Text);
@@ -331,7 +331,7 @@ namespace ProjeKargoWebForms
                     lblSonuc.Text = "Kargo başarıyla güncellendi.";
                 }
                 db.SaveChanges();
-                gvKargo.DataBind();
+                gvKargoDataBind();
             }
             catch (Exception)
             {
