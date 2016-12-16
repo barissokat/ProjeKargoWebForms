@@ -132,22 +132,44 @@ namespace ProjeKargoWebForms
             tbYukseklik.Text = row.Cells[21].Text;
             tbEn.Text = row.Cells[22].Text;
             tbBoy.Text = row.Cells[23].Text;
-
+            /* GEÇİCİ ÇÖZÜM
+             * Birden fazla il eklendiği zaman sıkıntı çıkarabilir. 
+             * Kesin kontrol et değiştir.*/
             string gil = row.Cells[5].Text;
             var selectedGIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idgIl = selectedGIl.Id;
-            ddlgIl.SelectedIndex = Convert.ToInt32(idgIl);
+            ddlgIl.SelectedIndex = idgIl;
+
+            var GIlce = from ie in db.Ilceler where ie.IlId == idgIl select new { ie.Id, ie.Ad };
+            ddlgIlce.DataSource = GIlce.ToList();
+            ddlgIlce.DataValueField = "Id";
+            ddlgIlce.DataTextField = "Ad";
+            ddlgIlce.DataBind();
+            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+
+            string gilce = row.Cells[6].Text;
+            var selectedGIlce = (from ie in db.Ilceler where ie.IlId == idgIl && ie.Ad == gilce select ie).SingleOrDefault();
+            int idgIlce = selectedGIlce.Id;
+            ddlgIlce.SelectedIndex = Convert.ToInt32(idgIlce);
 
 
-            string ail = row.Cells[5].Text;
+            string ail = row.Cells[14].Text;
             var selectedAIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idaIl = selectedAIl.Id;
             ddlaIl.SelectedIndex = Convert.ToInt32(idaIl);
 
+            var AIlce = from ie in db.Ilceler where ie.IlId == idaIl select new { ie.Id, ie.Ad };
+            ddlaIlce.DataSource = AIlce.ToList();
+            ddlaIlce.DataValueField = "Id";
+            ddlaIlce.DataTextField = "Ad";
+            ddlaIlce.DataBind();
+            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
-            /*Bilgilerdeki il ilçe seçimi güncellemede de seçili olsun*/
-            ddlgIlce.SelectedIndex = 0;
-            ddlaIlce.SelectedIndex = 0;
+            string ailce = row.Cells[15].Text;
+            var selectedAIlce = (from ie in db.Ilceler where ie.IlId == idaIl && ie.Ad == ailce select ie).SingleOrDefault();
+            int idaIlce = selectedAIlce.Id;
+            ddlaIlce.SelectedIndex = Convert.ToInt32(idaIlce);
+            /**/
         }
 
         protected void btnYeniKargo_Click(object sender, EventArgs e)
@@ -177,6 +199,15 @@ namespace ProjeKargoWebForms
             tbaApart.Text = string.Empty;
             tbaNo.Text = string.Empty;
             lblSonuc.Text = "";
+            /* GEÇİCİ ÇÖZÜM
+             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
+             * 
+             */
+            ddlgIlce.Items.Clear();
+            ddlaIlce.Items.Clear();
+            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            /**/
 
             tbAgirlik.Focus();
         }
@@ -342,6 +373,9 @@ namespace ProjeKargoWebForms
                 }
                 db.SaveChanges();
                 gvKargoDataBind();
+
+
+                
             }
             catch (Exception)
             {
@@ -372,6 +406,15 @@ namespace ProjeKargoWebForms
             tbaSok.Text = string.Empty;
             tbaApart.Text = string.Empty;
             tbaNo.Text = string.Empty;
+            /* GEÇİCİ ÇÖZÜM
+             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
+             * 
+             */
+            ddlgIlce.Items.Clear();
+            ddlaIlce.Items.Clear();
+            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            /**/
         }
     }
 }
