@@ -133,9 +133,19 @@ namespace ProjeKargoWebForms
             tbEn.Text = row.Cells[22].Text;
             tbBoy.Text = row.Cells[23].Text;
 
+            string gil = row.Cells[5].Text;
+            var selectedGIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
+            int idgIl = selectedGIl.Id;
+            ddlgIl.SelectedIndex = Convert.ToInt32(idgIl);
+
+
+            string ail = row.Cells[5].Text;
+            var selectedAIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
+            int idaIl = selectedAIl.Id;
+            ddlaIl.SelectedIndex = Convert.ToInt32(idaIl);
+
+
             /*Bilgilerdeki il ilçe seçimi güncellemede de seçili olsun*/
-            ddlgIl.SelectedIndex = 0;
-            ddlaIl.SelectedIndex = 0;
             ddlgIlce.SelectedIndex = 0;
             ddlaIlce.SelectedIndex = 0;
         }
