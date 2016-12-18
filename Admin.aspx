@@ -228,4 +228,38 @@
         </tr>
     </table>
 
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <asp:Label ID="Label28" runat="server" Text="Kargo Durum Değişimi" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label29" runat="server" Text="Takip No"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbTakipNo" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label30" runat="server" Text="Durum:"></asp:Label>
+
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlDurum" runat="server"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle"  />
+            </td>
+            <td>
+                <asp:Label ID="lblDurumsonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+        </tr>
+    </table>
+
 </asp:Content>
