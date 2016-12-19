@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnYeni" runat="server" Text="Yeni Kargo" OnClick="btnYeniKargo_Click" />
+                <asp:Button ID="btnYeniKargo" runat="server" Text="Yeni Kargo" OnClick="btnYeniKargo_Click" />
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -79,7 +79,7 @@
                 <asp:Label ID="Label8" runat="server" Text="Ad"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgAd" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenAd" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -87,7 +87,7 @@
                 <asp:Label ID="Label9" runat="server" Text="Soyad"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgSoyad" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenSoyad" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -95,7 +95,7 @@
                 <asp:Label ID="Label10" runat="server" Text="Tel"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgTel" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenTel" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -103,7 +103,7 @@
                 <asp:Label ID="Label11" runat="server" Text="İl"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlgIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlgIl_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlGonderenIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlgIl_SelectedIndexChanged"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -111,7 +111,7 @@
                 <asp:Label ID="Label12" runat="server" Text="İlçe"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlgIlce" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlGonderenIlce" runat="server"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -119,7 +119,7 @@
                 <asp:Label ID="Label13" runat="server" Text="Mahalle"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgMah" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenMahalle" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -127,7 +127,7 @@
                 <asp:Label ID="Label14" runat="server" Text="Sokak"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgSok" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenSokak" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -135,7 +135,7 @@
                 <asp:Label ID="Label15" runat="server" Text="Apartman"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgApart" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenApartman" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -143,12 +143,12 @@
                 <asp:Label ID="Label16" runat="server" Text="No"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbgNo" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbGonderenNo" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Label ID="Label17" runat="server" Text="Alıcı İçerik" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                <asp:Label ID="Label17" runat="server" Text="Alici İçerik" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -157,7 +157,7 @@
                 <asp:Label ID="Label18" runat="server" Text="Ad"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaAd" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciAd" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -165,7 +165,7 @@
                 <asp:Label ID="Label19" runat="server" Text="Soyad"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaSoyad" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciSoyad" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -173,7 +173,7 @@
                 <asp:Label ID="Label20" runat="server" Text="Tel"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaTel" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciTel" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -181,7 +181,7 @@
                 <asp:Label ID="Label21" runat="server" Text="İl"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlaIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlaIl_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlAliciIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlaIl_SelectedIndexChanged"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -189,7 +189,7 @@
                 <asp:Label ID="Label22" runat="server" Text="İlçe"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlaIlce" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlAliciIlce" runat="server"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -197,7 +197,7 @@
                 <asp:Label ID="Label23" runat="server" Text="Mahalle"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaMah" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciMahalle" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -205,7 +205,7 @@
                 <asp:Label ID="Label24" runat="server" Text="Sokak"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaSok" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciSokak" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -213,7 +213,7 @@
                 <asp:Label ID="Label25" runat="server" Text="Apartman"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaApart" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciApartman" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -221,7 +221,7 @@
                 <asp:Label ID="Label26" runat="server" Text="No"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="tbaNo" runat="server"></asp:TextBox>
+                <asp:TextBox ID="tbAliciNo" runat="server"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -229,7 +229,7 @@
                 <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()" />
             </td>
             <td>
-                <asp:Label ID="lblSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                <asp:Label ID="lblKargoSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
         </tr>
     </table>

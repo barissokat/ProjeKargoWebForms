@@ -21,19 +21,19 @@ namespace ProjeKargoWebForms
                 var il = from i in db.Iller select new { i.Id, i.Ad };
                 var durum = from c in db.Durumlar select new { c.Id, c.Ad };
 
-                ddlgIl.DataSource = il.ToList();
-                ddlgIl.DataValueField = "Id";
-                ddlgIl.DataTextField = "Ad";
-                ddlgIl.DataBind();
-                ddlgIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
-                ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+                ddlGonderenIl.DataSource = il.ToList();
+                ddlGonderenIl.DataValueField = "Id";
+                ddlGonderenIl.DataTextField = "Ad";
+                ddlGonderenIl.DataBind();
+                ddlGonderenIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
+                ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
-                ddlaIl.DataSource = il.ToList();
-                ddlaIl.DataValueField = "Id";
-                ddlaIl.DataTextField = "Ad";
-                ddlaIl.DataBind();
-                ddlaIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
-                ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+                ddlAliciIl.DataSource = il.ToList();
+                ddlAliciIl.DataValueField = "Id";
+                ddlAliciIl.DataTextField = "Ad";
+                ddlAliciIl.DataBind();
+                ddlAliciIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
+                ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
                 ddlDurum.DataSource = durum.ToList();
                 ddlDurum.DataValueField = "Id";
@@ -90,30 +90,30 @@ namespace ProjeKargoWebForms
 
         protected void ddlgIl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlgIl.SelectedIndex >= 0)
+            if (ddlGonderenIl.SelectedIndex >= 0)
             {
-                var sec = ddlgIl.SelectedIndex;
+                var sec = ddlGonderenIl.SelectedIndex;
                 var ilce = from i in db.Ilceler where i.IlId == sec select new { i.Id, i.Ad };
-                ddlgIlce.DataSource = ilce.ToList();
-                ddlgIlce.DataValueField = "Id";
-                ddlgIlce.DataTextField = "Ad";
-                ddlgIlce.DataBind();
+                ddlGonderenIlce.DataSource = ilce.ToList();
+                ddlGonderenIlce.DataValueField = "Id";
+                ddlGonderenIlce.DataTextField = "Ad";
+                ddlGonderenIlce.DataBind();
             }
-            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
         }
 
         protected void ddlaIl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlaIl.SelectedIndex >= 0)
+            if (ddlAliciIl.SelectedIndex >= 0)
             {
-                var sec = ddlaIl.SelectedIndex;
+                var sec = ddlAliciIl.SelectedIndex;
                 var ilce = from i in db.Ilceler where i.IlId == sec select new { i.Id, i.Ad };
-                ddlaIlce.DataSource = ilce.ToList();
-                ddlaIlce.DataValueField = "Id";
-                ddlaIlce.DataTextField = "Ad";
-                ddlaIlce.DataBind();
+                ddlAliciIlce.DataSource = ilce.ToList();
+                ddlAliciIlce.DataValueField = "Id";
+                ddlAliciIlce.DataTextField = "Ad";
+                ddlAliciIlce.DataBind();
             }
-            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
         }
 
         protected void gvKargo_SelectedIndexChanged(object sender, EventArgs e)
@@ -121,20 +121,20 @@ namespace ProjeKargoWebForms
             int selectedRowIndex = gvKargo.SelectedIndex;
             GridViewRow row = gvKargo.Rows[selectedRowIndex];
             tbTakipId.Text = row.Cells[1].Text;
-            tbgAd.Text = row.Cells[2].Text;
-            tbgSoyad.Text = row.Cells[3].Text;
-            tbgTel.Text = row.Cells[4].Text;
-            tbgMah.Text = row.Cells[7].Text;
-            tbgSok.Text = row.Cells[8].Text;
-            tbgApart.Text = row.Cells[9].Text;
-            tbgNo.Text = row.Cells[10].Text;
-            tbaAd.Text = row.Cells[11].Text;
-            tbaSoyad.Text = row.Cells[12].Text;
-            tbaTel.Text = row.Cells[13].Text;
-            tbaMah.Text = row.Cells[16].Text;
-            tbaSok.Text = row.Cells[17].Text;
-            tbaApart.Text = row.Cells[18].Text;
-            tbaNo.Text = row.Cells[19].Text;
+            tbGonderenAd.Text = row.Cells[2].Text;
+            tbGonderenSoyad.Text = row.Cells[3].Text;
+            tbGonderenTel.Text = row.Cells[4].Text;
+            tbGonderenMahalle.Text = row.Cells[7].Text;
+            tbGonderenSokak.Text = row.Cells[8].Text;
+            tbGonderenApartman.Text = row.Cells[9].Text;
+            tbGonderenNo.Text = row.Cells[10].Text;
+            tbAliciAd.Text = row.Cells[11].Text;
+            tbAliciSoyad.Text = row.Cells[12].Text;
+            tbAliciTel.Text = row.Cells[13].Text;
+            tbAliciMahalle.Text = row.Cells[16].Text;
+            tbAliciSokak.Text = row.Cells[17].Text;
+            tbAliciApartman.Text = row.Cells[18].Text;
+            tbAliciNo.Text = row.Cells[19].Text;
             tbAgirlik.Text = row.Cells[20].Text;
             tbYukseklik.Text = row.Cells[21].Text;
             tbEn.Text = row.Cells[22].Text;
@@ -145,37 +145,37 @@ namespace ProjeKargoWebForms
             string gil = row.Cells[5].Text;
             var selectedGIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idgIl = selectedGIl.Id;
-            ddlgIl.SelectedIndex = idgIl;
+            ddlGonderenIl.SelectedIndex = idgIl;
 
             var GIlce = from ie in db.Ilceler where ie.IlId == idgIl select new { ie.Id, ie.Ad };
-            ddlgIlce.DataSource = GIlce.ToList();
-            ddlgIlce.DataValueField = "Id";
-            ddlgIlce.DataTextField = "Ad";
-            ddlgIlce.DataBind();
-            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlGonderenIlce.DataSource = GIlce.ToList();
+            ddlGonderenIlce.DataValueField = "Id";
+            ddlGonderenIlce.DataTextField = "Ad";
+            ddlGonderenIlce.DataBind();
+            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
             string gilce = row.Cells[6].Text;
             var selectedGIlce = (from ie in db.Ilceler where ie.IlId == idgIl && ie.Ad == gilce select ie).SingleOrDefault();
             int idgIlce = selectedGIlce.Id;
-            ddlgIlce.SelectedIndex = Convert.ToInt32(idgIlce);
+            ddlGonderenIlce.SelectedIndex = Convert.ToInt32(idgIlce);
 
 
             string ail = row.Cells[14].Text;
             var selectedAIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idaIl = selectedAIl.Id;
-            ddlaIl.SelectedIndex = Convert.ToInt32(idaIl);
+            ddlAliciIl.SelectedIndex = Convert.ToInt32(idaIl);
 
             var AIlce = from ie in db.Ilceler where ie.IlId == idaIl select new { ie.Id, ie.Ad };
-            ddlaIlce.DataSource = AIlce.ToList();
-            ddlaIlce.DataValueField = "Id";
-            ddlaIlce.DataTextField = "Ad";
-            ddlaIlce.DataBind();
-            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlAliciIlce.DataSource = AIlce.ToList();
+            ddlAliciIlce.DataValueField = "Id";
+            ddlAliciIlce.DataTextField = "Ad";
+            ddlAliciIlce.DataBind();
+            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
             string ailce = row.Cells[15].Text;
             var selectedAIlce = (from ie in db.Ilceler where ie.IlId == idaIl && ie.Ad == ailce select ie).SingleOrDefault();
             int idaIlce = selectedAIlce.Id;
-            ddlaIlce.SelectedIndex = Convert.ToInt32(idaIlce);
+            ddlAliciIlce.SelectedIndex = Convert.ToInt32(idaIlce);
             /**/
         }
 
@@ -187,33 +187,33 @@ namespace ProjeKargoWebForms
             tbYukseklik.Text = string.Empty;
             tbEn.Text = string.Empty;
             tbBoy.Text = string.Empty;
-            tbgAd.Text = string.Empty;
-            tbgSoyad.Text = string.Empty;
-            tbgTel.Text = string.Empty;
-            ddlgIl.SelectedIndex = 0;
-            ddlgIlce.SelectedIndex = 0;
-            tbgMah.Text = string.Empty;
-            tbgSok.Text = string.Empty;
-            tbgApart.Text = string.Empty;
-            tbgNo.Text = string.Empty;
-            tbaAd.Text = string.Empty;
-            tbaSoyad.Text = string.Empty;
-            tbaTel.Text = string.Empty;
-            ddlaIl.SelectedIndex = 0;
-            ddlaIlce.SelectedIndex = 0;
-            tbaMah.Text = string.Empty;
-            tbaSok.Text = string.Empty;
-            tbaApart.Text = string.Empty;
-            tbaNo.Text = string.Empty;
-            lblSonuc.Text = "";
+            tbGonderenAd.Text = string.Empty;
+            tbGonderenSoyad.Text = string.Empty;
+            tbGonderenTel.Text = string.Empty;
+            ddlGonderenIl.SelectedIndex = 0;
+            ddlGonderenIlce.SelectedIndex = 0;
+            tbGonderenMahalle.Text = string.Empty;
+            tbGonderenSokak.Text = string.Empty;
+            tbGonderenApartman.Text = string.Empty;
+            tbGonderenNo.Text = string.Empty;
+            tbAliciAd.Text = string.Empty;
+            tbAliciSoyad.Text = string.Empty;
+            tbAliciTel.Text = string.Empty;
+            ddlAliciIl.SelectedIndex = 0;
+            ddlAliciIlce.SelectedIndex = 0;
+            tbAliciMahalle.Text = string.Empty;
+            tbAliciSokak.Text = string.Empty;
+            tbAliciApartman.Text = string.Empty;
+            tbAliciNo.Text = string.Empty;
+            lblKargoSonuc.Text = "";
             /* GEÇİCİ ÇÖZÜM
              * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
              * 
              */
-            ddlgIlce.Items.Clear();
-            ddlaIlce.Items.Clear();
-            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlGonderenIlce.Items.Clear();
+            ddlAliciIlce.Items.Clear();
+            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
 
             tbAgirlik.Focus();
@@ -244,8 +244,8 @@ namespace ProjeKargoWebForms
                     aKisi = new Kisi();
                     kargo = new Kargo();
 
-                    var gil = ddlgIl.SelectedIndex;
-                    var gilce = ddlgIlce.SelectedItem.Text.ToString();
+                    var gil = ddlGonderenIl.SelectedIndex;
+                    var gilce = ddlGonderenIlce.SelectedItem.Text.ToString();
                     gIl = db.Iller.Find(gil);
                     gIlce = (from i in db.Iller
                              join ie in db.Ilceler on i.Id equals ie.IlId
@@ -254,22 +254,22 @@ namespace ProjeKargoWebForms
                     gAdres.IlId = gil;
                     gAdres.IlceId = gIlce.Id;
 
-                    gAdres.Mahalle = tbgMah.Text;
-                    gAdres.Sokak = tbgSok.Text;
-                    gAdres.Apartman = tbgApart.Text;
-                    gAdres.No = tbgNo.Text;
+                    gAdres.Mahalle = tbGonderenMahalle.Text;
+                    gAdres.Sokak = tbGonderenSokak.Text;
+                    gAdres.Apartman = tbGonderenApartman.Text;
+                    gAdres.No = tbGonderenNo.Text;
                     db.Adresler.Add(gAdres);
                     db.SaveChanges();
 
                     gKisi.AdresId = gAdres.Id;
-                    gKisi.Ad = tbgAd.Text;
-                    gKisi.Soyad = tbgSoyad.Text;
-                    gKisi.Tel = tbgTel.Text;
+                    gKisi.Ad = tbGonderenAd.Text;
+                    gKisi.Soyad = tbGonderenSoyad.Text;
+                    gKisi.Tel = tbGonderenTel.Text;
                     db.Kisiler.Add(gKisi);
                     db.SaveChanges();
 
-                    var ail = ddlaIl.SelectedIndex;
-                    var ailce = ddlaIlce.SelectedItem.Text.ToString();
+                    var ail = ddlAliciIl.SelectedIndex;
+                    var ailce = ddlAliciIlce.SelectedItem.Text.ToString();
                     aIl = db.Iller.Find(ail);
                     aIlce = (from i in db.Iller
                              join ie in db.Ilceler on i.Id equals ie.IlId
@@ -278,17 +278,17 @@ namespace ProjeKargoWebForms
                     aAdres.IlId = ail;
                     aAdres.IlceId = aIlce.Id;
 
-                    aAdres.Mahalle = tbaMah.Text;
-                    aAdres.Sokak = tbaSok.Text;
-                    aAdres.Apartman = tbaApart.Text;
-                    aAdres.No = tbaNo.Text;
+                    aAdres.Mahalle = tbAliciMahalle.Text;
+                    aAdres.Sokak = tbAliciSokak.Text;
+                    aAdres.Apartman = tbAliciApartman.Text;
+                    aAdres.No = tbAliciNo.Text;
                     db.Adresler.Add(aAdres);
                     db.SaveChanges();
 
                     aKisi.AdresId = aAdres.Id;
-                    aKisi.Ad = tbaAd.Text;
-                    aKisi.Soyad = tbaSoyad.Text;
-                    aKisi.Tel = tbaTel.Text;
+                    aKisi.Ad = tbAliciAd.Text;
+                    aKisi.Soyad = tbAliciSoyad.Text;
+                    aKisi.Tel = tbAliciTel.Text;
                     db.Kisiler.Add(aKisi);
                     db.SaveChanges();
 
@@ -307,7 +307,7 @@ namespace ProjeKargoWebForms
                     db.Takipler.Add(takip);
                     db.SaveChanges();
 
-                    lblSonuc.Text = "Kargo başarıyla eklendi.";
+                    lblKargoSonuc.Text = "Kargo başarıyla eklendi.";
                 }
                 else
                 {
@@ -324,8 +324,8 @@ namespace ProjeKargoWebForms
                               where a.Id == takip.AdresId
                               select a).SingleOrDefault();
 
-                    var gil = ddlgIl.SelectedIndex;
-                    var gilce = ddlgIlce.SelectedItem.Text.ToString();
+                    var gil = ddlGonderenIl.SelectedIndex;
+                    var gilce = ddlGonderenIlce.SelectedItem.Text.ToString();
                     gIl = db.Iller.Find(gil);
                     gIlce = (from i in db.Iller
                              join ie in db.Ilceler on i.Id equals ie.IlId
@@ -334,18 +334,18 @@ namespace ProjeKargoWebForms
                     gAdres.IlId = gil;
                     gAdres.IlceId = gIlce.Id;
 
-                    gAdres.Mahalle = tbgMah.Text;
-                    gAdres.Sokak = tbgSok.Text;
-                    gAdres.Apartman = tbgApart.Text;
-                    gAdres.No = tbgNo.Text;
+                    gAdres.Mahalle = tbGonderenMahalle.Text;
+                    gAdres.Sokak = tbGonderenSokak.Text;
+                    gAdres.Apartman = tbGonderenApartman.Text;
+                    gAdres.No = tbGonderenNo.Text;
 
                     gKisi = (from a in db.Adresler
                              join k in db.Kisiler on a.Id equals k.AdresId
                              where k.AdresId == gAdres.Id
                              select k).SingleOrDefault();
-                    gKisi.Ad = tbgAd.Text;
-                    gKisi.Soyad = tbgSoyad.Text;
-                    gKisi.Tel = tbgTel.Text;
+                    gKisi.Ad = tbGonderenAd.Text;
+                    gKisi.Soyad = tbGonderenSoyad.Text;
+                    gKisi.Tel = tbGonderenTel.Text;
 
 
                     aAdres = (from t in db.Takipler
@@ -353,8 +353,8 @@ namespace ProjeKargoWebForms
                               where a.Id == takip.AdresId1
                               select a).SingleOrDefault();
 
-                    var ail = ddlaIl.SelectedIndex;
-                    var ailce = ddlaIlce.SelectedItem.Text.ToString();
+                    var ail = ddlAliciIl.SelectedIndex;
+                    var ailce = ddlAliciIlce.SelectedItem.Text.ToString();
                     aIl = db.Iller.Find(ail);
                     aIlce = (from i in db.Iller
                              join ie in db.Ilceler on i.Id equals ie.IlId
@@ -363,20 +363,20 @@ namespace ProjeKargoWebForms
                     aAdres.IlId = ail;
                     aAdres.IlceId = aIlce.Id;
 
-                    aAdres.Mahalle = tbaMah.Text;
-                    aAdres.Sokak = tbaSok.Text;
-                    aAdres.Apartman = tbaApart.Text;
-                    aAdres.No = tbaNo.Text;
+                    aAdres.Mahalle = tbAliciMahalle.Text;
+                    aAdres.Sokak = tbAliciSokak.Text;
+                    aAdres.Apartman = tbAliciApartman.Text;
+                    aAdres.No = tbAliciNo.Text;
 
                     aKisi = (from a in db.Adresler
                              join k in db.Kisiler on a.Id equals k.AdresId
                              where k.AdresId == aAdres.Id
                              select k).SingleOrDefault();
-                    aKisi.Ad = tbaAd.Text;
-                    aKisi.Soyad = tbaSoyad.Text;
-                    aKisi.Tel = tbaTel.Text;
+                    aKisi.Ad = tbAliciAd.Text;
+                    aKisi.Soyad = tbAliciSoyad.Text;
+                    aKisi.Tel = tbAliciTel.Text;
 
-                    lblSonuc.Text = "Kargo başarıyla güncellendi.";
+                    lblKargoSonuc.Text = "Kargo başarıyla güncellendi.";
                 }
                 db.SaveChanges();
                 gvKargoDataBind();
@@ -386,7 +386,7 @@ namespace ProjeKargoWebForms
             }
             catch (Exception)
             {
-                lblSonuc.Text = "İşlem başarısız oldu.";
+                lblKargoSonuc.Text = "İşlem başarısız oldu.";
             }
 
             gvKargo.SelectedIndex = -1;
@@ -395,32 +395,32 @@ namespace ProjeKargoWebForms
             tbYukseklik.Text = string.Empty;
             tbEn.Text = string.Empty;
             tbBoy.Text = string.Empty;
-            tbgAd.Text = string.Empty;
-            tbgSoyad.Text = string.Empty;
-            tbgTel.Text = string.Empty;
-            ddlgIl.SelectedIndex = 0;
-            ddlgIlce.SelectedIndex = 0;
-            tbgMah.Text = string.Empty;
-            tbgSok.Text = string.Empty;
-            tbgApart.Text = string.Empty;
-            tbgNo.Text = string.Empty;
-            tbaAd.Text = string.Empty;
-            tbaSoyad.Text = string.Empty;
-            tbaTel.Text = string.Empty;
-            ddlaIl.SelectedIndex = 0;
-            ddlaIlce.SelectedIndex = 0;
-            tbaMah.Text = string.Empty;
-            tbaSok.Text = string.Empty;
-            tbaApart.Text = string.Empty;
-            tbaNo.Text = string.Empty;
+            tbGonderenAd.Text = string.Empty;
+            tbGonderenSoyad.Text = string.Empty;
+            tbGonderenTel.Text = string.Empty;
+            ddlGonderenIl.SelectedIndex = 0;
+            ddlGonderenIlce.SelectedIndex = 0;
+            tbGonderenMahalle.Text = string.Empty;
+            tbGonderenSokak.Text = string.Empty;
+            tbGonderenApartman.Text = string.Empty;
+            tbGonderenNo.Text = string.Empty;
+            tbAliciAd.Text = string.Empty;
+            tbAliciSoyad.Text = string.Empty;
+            tbAliciTel.Text = string.Empty;
+            ddlAliciIl.SelectedIndex = 0;
+            ddlAliciIlce.SelectedIndex = 0;
+            tbAliciMahalle.Text = string.Empty;
+            tbAliciSokak.Text = string.Empty;
+            tbAliciApartman.Text = string.Empty;
+            tbAliciNo.Text = string.Empty;
             /* GEÇİCİ ÇÖZÜM
              * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
              * 
              */
-            ddlgIlce.Items.Clear();
-            ddlaIlce.Items.Clear();
-            ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlGonderenIlce.Items.Clear();
+            ddlAliciIlce.Items.Clear();
+            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
         }
 

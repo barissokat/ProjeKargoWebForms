@@ -31,13 +31,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label0;
         
         /// <summary>
-        /// btnYeni control.
+        /// btnYeniKargo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnYeni;
+        protected global::System.Web.UI.WebControls.Button btnYeniKargo;
         
         /// <summary>
         /// Label1 control.
@@ -157,13 +157,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label8;
         
         /// <summary>
-        /// tbgAd control.
+        /// tbGonderenAd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgAd;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenAd;
         
         /// <summary>
         /// Label9 control.
@@ -175,13 +175,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label9;
         
         /// <summary>
-        /// tbgSoyad control.
+        /// tbGonderenSoyad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgSoyad;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenSoyad;
         
         /// <summary>
         /// Label10 control.
@@ -193,13 +193,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label10;
         
         /// <summary>
-        /// tbgTel control.
+        /// tbGonderenTel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgTel;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenTel;
         
         /// <summary>
         /// Label11 control.
@@ -211,13 +211,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label11;
         
         /// <summary>
-        /// ddlgIl control.
+        /// ddlGonderenIl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlgIl;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGonderenIl;
         
         /// <summary>
         /// Label12 control.
@@ -229,13 +229,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label12;
         
         /// <summary>
-        /// ddlgIlce control.
+        /// ddlGonderenIlce control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlgIlce;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGonderenIlce;
         
         /// <summary>
         /// Label13 control.
@@ -247,13 +247,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label13;
         
         /// <summary>
-        /// tbgMah control.
+        /// tbGonderenMahalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgMah;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenMahalle;
         
         /// <summary>
         /// Label14 control.
@@ -265,13 +265,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label14;
         
         /// <summary>
-        /// tbgSok control.
+        /// tbGonderenSokak control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgSok;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenSokak;
         
         /// <summary>
         /// Label15 control.
@@ -283,13 +283,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label15;
         
         /// <summary>
-        /// tbgApart control.
+        /// tbGonderenApartman control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgApart;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenApartman;
         
         /// <summary>
         /// Label16 control.
@@ -301,13 +301,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label16;
         
         /// <summary>
-        /// tbgNo control.
+        /// tbGonderenNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbgNo;
+        protected global::System.Web.UI.WebControls.TextBox tbGonderenNo;
         
         /// <summary>
         /// Label17 control.
@@ -328,13 +328,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label18;
         
         /// <summary>
-        /// tbaAd control.
+        /// tbAliciAd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaAd;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciAd;
         
         /// <summary>
         /// Label19 control.
@@ -346,13 +346,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label19;
         
         /// <summary>
-        /// tbaSoyad control.
+        /// tbAliciSoyad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaSoyad;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciSoyad;
         
         /// <summary>
         /// Label20 control.
@@ -364,13 +364,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label20;
         
         /// <summary>
-        /// tbaTel control.
+        /// tbAliciTel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaTel;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciTel;
         
         /// <summary>
         /// Label21 control.
@@ -382,13 +382,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label21;
         
         /// <summary>
-        /// ddlaIl control.
+        /// ddlAliciIl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlaIl;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAliciIl;
         
         /// <summary>
         /// Label22 control.
@@ -400,13 +400,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label22;
         
         /// <summary>
-        /// ddlaIlce control.
+        /// ddlAliciIlce control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlaIlce;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAliciIlce;
         
         /// <summary>
         /// Label23 control.
@@ -418,13 +418,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label23;
         
         /// <summary>
-        /// tbaMah control.
+        /// tbAliciMahalle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaMah;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciMahalle;
         
         /// <summary>
         /// Label24 control.
@@ -436,13 +436,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label24;
         
         /// <summary>
-        /// tbaSok control.
+        /// tbAliciSokak control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaSok;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciSokak;
         
         /// <summary>
         /// Label25 control.
@@ -454,13 +454,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label25;
         
         /// <summary>
-        /// tbaApart control.
+        /// tbAliciApartman control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaApart;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciApartman;
         
         /// <summary>
         /// Label26 control.
@@ -472,13 +472,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Label Label26;
         
         /// <summary>
-        /// tbaNo control.
+        /// tbAliciNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbaNo;
+        protected global::System.Web.UI.WebControls.TextBox tbAliciNo;
         
         /// <summary>
         /// btnKargo control.
@@ -490,13 +490,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Button btnKargo;
         
         /// <summary>
-        /// lblSonuc control.
+        /// lblKargoSonuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSonuc;
+        protected global::System.Web.UI.WebControls.Label lblKargoSonuc;
         
         /// <summary>
         /// Label28 control.
