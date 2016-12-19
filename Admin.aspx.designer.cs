@@ -580,13 +580,13 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.GridView gvSube;
         
         /// <summary>
-        /// btnsYeni control.
+        /// btnSubeYeni control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnsYeni;
+        protected global::System.Web.UI.WebControls.Button btnSubeYeni;
         
         /// <summary>
         /// Label31 control.

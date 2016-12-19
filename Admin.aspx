@@ -277,14 +277,18 @@
         <tr>
             <td>
                 <div style="overflow-x: auto; width: 800px">
-                    <asp:GridView ID="gvSube" runat="server"></asp:GridView>
+                    <asp:GridView ID="gvSube" runat="server" OnSelectedIndexChanged="gvSube_SelectedIndexChanged">
+                        <Columns>
+                            <asp:ButtonField CommandName="Select" Text="Seç" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
             </td>
             <td class="auto-style1"></td>
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnsYeni" runat="server" Text="Yeni Şube" />
+                <asp:Button ID="btnSubeYeni" runat="server" Text="Yeni Şube" OnClick="btnSubeYeni_Click" />
             </td>
             <td class="auto-style1"></td>
         </tr>
@@ -301,7 +305,7 @@
                 <asp:Label ID="Label32" runat="server" Text="İl"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlSubeIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlsIl_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlSubeIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSubeIl_SelectedIndexChanged"></asp:DropDownList>
             </td>
         </tr>
         <tr>
@@ -346,7 +350,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnSube" runat="server" Text="Kaydet" />
+                <asp:Button ID="btnSube" runat="server" Text="Kaydet" OnClick="btnSube_Click" />
             </td>
             <td>
                 <asp:Label ID="lblSubeSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>

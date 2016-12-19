@@ -39,9 +39,17 @@ namespace ProjeKargoWebForms
                 ddlDurum.DataValueField = "Id";
                 ddlDurum.DataTextField = "Ad";
                 ddlDurum.DataBind();
-                ddlDurum.Items.Insert(0, new ListItem("---"));
+                ddlDurum.Items.Insert(0, new ListItem("Bir durum seçiniz"));
+
+                ddlSubeIl.DataSource = il.ToList();
+                ddlSubeIl.DataValueField = "Id";
+                ddlSubeIl.DataTextField = "Ad";
+                ddlSubeIl.DataBind();
+                ddlSubeIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
+                ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
                 gvKargoDataBind();
+                gvSubeDataBind();
             }
         }
         private void gvKargoDataBind()
@@ -82,7 +90,7 @@ namespace ProjeKargoWebForms
                                Yükseklik = ka.Yukseklik,
                                ka.En,
                                ka.Boy,
-                               Durum = d.Ad,
+                               Durum = d.Ad
                            };
             gvKargo.DataSource = kargolar.ToList();
             gvKargo.DataBind();
@@ -442,6 +450,147 @@ namespace ProjeKargoWebForms
             }
             tbTakipNo.Text = string.Empty;
             ddlDurum.SelectedIndex = 0;
+        }
+
+        private void gvSubeDataBind()
+        {
+            var subeler =  from s in db.Subeler
+                           join a in db.Adresler on s.AdresId equals a.Id
+                           join i in db.Iller on a.IlId equals i.Id
+                           join ie in db.Ilceler on a.IlceId equals ie.Id
+                           select new
+                           {
+                               SubeId = s.Id,
+                               İl = i.Ad,
+                               İlce = ie.Ad,
+                               Ad = s.Ad,
+                               Mahelle = a.Mahalle,
+                               Sokak = a.Sokak,
+                               Telefon = s.Tel
+                           };
+            gvSube.DataSource = subeler.ToList();
+            gvSube.DataBind();
+        }
+
+        protected void btnSubeYeni_Click(object sender, EventArgs e)
+        {
+            gvSube.SelectedIndex = -1;
+            ddlSubeIl.SelectedIndex = 0;
+            ddlSubeIlce.SelectedIndex = 0;
+            tbSubeMahalle.Text = string.Empty;
+            tbSubeSokak.Text = string.Empty;
+            tbSubeAd.Text = string.Empty;
+            tbSubeTel.Text = string.Empty;
+            lblSubeSonuc.Text = string.Empty;
+        }
+
+        protected void ddlSubeIl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSubeIl.SelectedIndex >= 0)
+            {
+                var sec = ddlSubeIl.SelectedIndex;
+                var ilce = from i in db.Ilceler where i.IlId == sec select new { i.Id, i.Ad };
+                ddlSubeIlce.DataSource = ilce.ToList();
+                ddlSubeIlce.DataValueField = "Id";
+                ddlSubeIlce.DataTextField = "Ad";
+                ddlSubeIlce.DataBind();
+            }
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+        }
+
+        protected void btnSube_Click(object sender, EventArgs e)
+        {
+            Sube sube;
+            Adres adres;
+            Il il;
+            Ilce ilce;
+            int selectedRowIndex = gvSube.SelectedIndex;
+            try
+            {
+                if (selectedRowIndex < 0)
+                {
+                    sube = new Sube();
+                    adres = new Adres();
+                    il = new Il();
+                    ilce = new Ilce();
+
+                    var i = ddlSubeIl.SelectedIndex;
+                    var ie = ddlSubeIlce.SelectedItem.Text.ToString();
+                    il = db.Iller.Find(i);
+                    ilce = (from ii in db.Iller
+                            join iiee in db.Ilceler on ii.Id equals iiee.IlId
+                            where iiee.IlId == i && iiee.Ad == ie
+                            select iiee).SingleOrDefault();
+                    adres.IlId = i;
+                    adres.IlceId = ilce.Id;
+
+                    adres.Mahalle = tbSubeMahalle.Text;
+                    adres.Sokak = tbSubeSokak.Text;
+                    db.Adresler.Add(adres);
+                    db.SaveChanges();
+
+                    sube.Ad = tbSubeAd.Text;
+                    sube.Tel = tbSubeTel.Text;
+                    sube.AdresId = adres.Id;
+                    db.Subeler.Add(sube);
+
+                    lblSubeSonuc.Text = "Şube başarıyla eklenmiştir.";
+                }
+                else
+                {
+                    int subeId = Convert.ToInt32(tbSubeId.Text);
+                    sube = db.Subeler.Find(subeId);
+
+                    int adresId = Convert.ToInt32(sube.AdresId);
+                    adres = db.Adresler.Find(adresId);
+
+                    var i = ddlSubeIl.SelectedIndex;
+                    var ie = ddlSubeIlce.SelectedItem.Text.ToString();
+                    il = db.Iller.Find(i);
+                    ilce = (from ii in db.Iller
+                            join iiee in db.Ilceler on ii.Id equals iiee.IlId
+                            where iiee.IlId == i && iiee.Ad == ie
+                            select iiee).SingleOrDefault();
+                    adres.IlId = i;
+                    adres.IlceId = ilce.Id;
+
+                    adres.Mahalle = tbSubeMahalle.Text;
+                    adres.Sokak = tbSubeSokak.Text;
+
+                    sube.Ad = tbSubeAd.Text;
+                    sube.Tel = tbSubeTel.Text;
+                    lblSubeSonuc.Text = "Sube başarıyla güncellenmiştir.";
+                }
+                db.SaveChanges();
+                gvSubeDataBind();
+            }
+            catch (Exception)
+            {
+                lblSubeSonuc.Text = "İşlem başarısız olmuştur.";
+            }
+
+            gvSube.SelectedIndex = -1;
+            ddlSubeIl.SelectedIndex = 0;
+            ddlSubeIlce.SelectedIndex = 0;
+            tbSubeId.Text = string.Empty;
+            tbSubeMahalle.Text = string.Empty;
+            tbSubeSokak.Text = string.Empty;
+            tbSubeAd.Text = string.Empty;
+            tbSubeTel.Text = string.Empty;
+        }
+
+        protected void gvSube_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedRowIndex = gvSube.SelectedIndex;
+            GridViewRow row = gvSube.Rows[selectedRowIndex];
+
+            ddlSubeIl.SelectedIndex = 0;
+            ddlSubeIlce.SelectedIndex = 0;
+            tbSubeId.Text = row.Cells[1].Text;
+            tbSubeMahalle.Text = row.Cells[4].Text;
+            tbSubeSokak.Text = row.Cells[5].Text;
+            tbSubeAd.Text = row.Cells[6].Text;
+            tbSubeTel.Text = row.Cells[7].Text;
         }
     }
 }
