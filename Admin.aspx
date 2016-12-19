@@ -237,13 +237,13 @@
     <table style="width: 100%;">
         <tr>
             <td>
-                <asp:Label ID="Label28" runat="server" Text="Kargo Durum Değişimi" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+                <asp:Label ID="Label27" runat="server" Text="Kargo Durum Değişimi" Font-Bold="True" Font-Size="X-Large"></asp:Label>
             </td>
             <td class="auto-style1"></td>
         </tr>
         <tr>
             <td>
-                <asp:Label ID="Label29" runat="server" Text="Takip No"></asp:Label>
+                <asp:Label ID="Label28" runat="server" Text="Takip No"></asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="tbTakipNo" runat="server"></asp:TextBox>
@@ -251,7 +251,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Label ID="Label30" runat="server" Text="Durum:"></asp:Label>
+                <asp:Label ID="Label29" runat="server" Text="Durum:"></asp:Label>
 
             </td>
             <td>
@@ -264,6 +264,92 @@
             </td>
             <td>
                 <asp:Label ID="lblDurumSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <asp:Label ID="Label30" runat="server" Text="Şube Tablosu" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="overflow-x: auto; width: 800px">
+                    <asp:GridView ID="gvSube" runat="server"></asp:GridView>
+                </div>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnsYeni" runat="server" Text="Yeni Şube" />
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label31" runat="server" Text="Sube ID"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbSubeId" runat="server" Enabled="False"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label32" runat="server" Text="İl"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubeIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlsIl_SelectedIndexChanged"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label33" runat="server" Text="İlce"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubeIlce" runat="server"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label34" runat="server" Text="Mahalle"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbSubeMahalle" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label35" runat="server" Text="Sokak"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbSubeSokak" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label36" runat="server" Text="Ad"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbSubeAd" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label37" runat="server" Text="Tel"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbSubeTel" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnSube" runat="server" Text="Kaydet" />
+            </td>
+            <td>
+                <asp:Label ID="lblSubeSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
         </tr>
     </table>
