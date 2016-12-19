@@ -475,13 +475,15 @@ namespace ProjeKargoWebForms
         protected void btnSubeYeni_Click(object sender, EventArgs e)
         {
             gvSube.SelectedIndex = -1;
-            ddlSubeIl.SelectedIndex = 0;
-            ddlSubeIlce.SelectedIndex = 0;
             tbSubeMahalle.Text = string.Empty;
             tbSubeSokak.Text = string.Empty;
             tbSubeAd.Text = string.Empty;
             tbSubeTel.Text = string.Empty;
             lblSubeSonuc.Text = string.Empty;
+            ddlSubeIl.Items.Clear();
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlSubeIl.SelectedIndex = 0;
+            ddlSubeIlce.SelectedIndex = 0;
         }
 
         protected void ddlSubeIl_SelectedIndexChanged(object sender, EventArgs e)
@@ -570,27 +572,44 @@ namespace ProjeKargoWebForms
             }
 
             gvSube.SelectedIndex = -1;
-            ddlSubeIl.SelectedIndex = 0;
-            ddlSubeIlce.SelectedIndex = 0;
             tbSubeId.Text = string.Empty;
             tbSubeMahalle.Text = string.Empty;
             tbSubeSokak.Text = string.Empty;
             tbSubeAd.Text = string.Empty;
             tbSubeTel.Text = string.Empty;
+            ddlSubeIl.Items.Clear();
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlSubeIl.SelectedIndex = 0;
+            ddlSubeIlce.SelectedIndex = 0;
         }
 
         protected void gvSube_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selectedRowIndex = gvSube.SelectedIndex;
             GridViewRow row = gvSube.Rows[selectedRowIndex];
-
-            ddlSubeIl.SelectedIndex = 0;
-            ddlSubeIlce.SelectedIndex = 0;
+            
             tbSubeId.Text = row.Cells[1].Text;
             tbSubeMahalle.Text = row.Cells[4].Text;
             tbSubeSokak.Text = row.Cells[5].Text;
             tbSubeAd.Text = row.Cells[6].Text;
             tbSubeTel.Text = row.Cells[7].Text;
+
+            string subeIl = row.Cells[2].Text;
+            var selectedSubeIl = (from i in db.Iller where i.Ad == subeIl select i).SingleOrDefault();
+            int idSubeIl = selectedSubeIl.Id;
+            ddlSubeIl.SelectedIndex = idSubeIl;
+
+            var SubeIlce = from ie in db.Ilceler where ie.IlId == idSubeIl select new { ie.Id, ie.Ad };
+            ddlSubeIlce.DataSource = SubeIlce.ToList();
+            ddlSubeIlce.DataValueField = "Id";
+            ddlSubeIlce.DataTextField = "Ad";
+            ddlSubeIlce.DataBind();
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+
+            string subeIlce = row.Cells[3].Text;
+            var selectedSubeIlce = (from ie in db.Ilceler where ie.IlId == idSubeIl && ie.Ad == subeIlce select ie).SingleOrDefault();
+            int idSubeIlce = selectedSubeIlce.Id;
+            ddlSubeIlce.SelectedIndex = Convert.ToInt32(idSubeIlce);
         }
     }
 }
