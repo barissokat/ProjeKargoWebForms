@@ -19,6 +19,7 @@ namespace ProjeKargoWebForms
             if (!IsPostBack)
             {
                 var il = from i in db.Iller select new { i.Id, i.Ad };
+                var durum = from c in db.Durumlar select new { c.Id, c.Ad };
 
                 ddlgIl.DataSource = il.ToList();
                 ddlgIl.DataValueField = "Id";
@@ -33,6 +34,12 @@ namespace ProjeKargoWebForms
                 ddlaIl.DataBind();
                 ddlaIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
                 ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+
+                ddlDurum.DataSource = durum.ToList();
+                ddlDurum.DataValueField = "Id";
+                ddlDurum.DataTextField = "Ad";
+                ddlDurum.DataBind();
+                ddlDurum.Items.Insert(0, new ListItem("---"));
 
                 gvKargoDataBind();
             }
@@ -415,6 +422,26 @@ namespace ProjeKargoWebForms
             ddlgIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             ddlaIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
+        }
+
+        protected void btnDurumDegis_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var takipId = Convert.ToInt32(tbTakipNo.Text);
+                Takip takip = db.Takipler.Find(takipId);
+                takip.DurumId = ddlDurum.SelectedIndex;
+
+                lblDurumSonuc.Text = "Başarıyla güncellenmiştir.";
+                db.SaveChanges();
+                gvKargoDataBind();
+            }
+            catch (Exception)
+            {
+                lblDurumSonuc.Text = "Böyle bir kayıt bulunmamaktadır.";
+            }
+            tbTakipNo.Text = string.Empty;
+            ddlDurum.SelectedIndex = 0;
         }
     }
 }

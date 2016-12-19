@@ -22,6 +22,15 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.GridView gvKargo;
         
         /// <summary>
+        /// Label0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label0;
+        
+        /// <summary>
         /// btnYeni control.
         /// </summary>
         /// <remarks>
@@ -544,12 +553,12 @@ namespace ProjeKargoWebForms {
         protected global::System.Web.UI.WebControls.Button btnDurumDegis;
         
         /// <summary>
-        /// lblDurumsonuc control.
+        /// lblDurumSonuc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDurumsonuc;
+        protected global::System.Web.UI.WebControls.Label lblDurumSonuc;
     }
 }

@@ -12,6 +12,12 @@
     <table style="width: 100%;">
         <tr>
             <td>
+                <asp:Label ID="Label0" runat="server" Text="Kargo Ekle" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
                 <asp:Button ID="btnYeni" runat="server" Text="Yeni Kargo" OnClick="btnYeniKargo_Click" />
             </td>
             <td>&nbsp;</td>
@@ -254,10 +260,10 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle"  />
+                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle" OnClick="btnDurumDegis_Click"  />
             </td>
             <td>
-                <asp:Label ID="lblDurumsonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                <asp:Label ID="lblDurumSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
         </tr>
     </table>
