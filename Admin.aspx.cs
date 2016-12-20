@@ -475,15 +475,14 @@ namespace ProjeKargoWebForms
         protected void btnSubeYeni_Click(object sender, EventArgs e)
         {
             gvSube.SelectedIndex = -1;
+            ddlSubeIl.SelectedIndex = 0;
             tbSubeMahalle.Text = string.Empty;
             tbSubeSokak.Text = string.Empty;
             tbSubeAd.Text = string.Empty;
             tbSubeTel.Text = string.Empty;
             lblSubeSonuc.Text = string.Empty;
-            ddlSubeIl.Items.Clear();
+            ddlSubeIlce.Items.Clear();
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlSubeIl.SelectedIndex = 0;
-            ddlSubeIlce.SelectedIndex = 0;
         }
 
         protected void ddlSubeIl_SelectedIndexChanged(object sender, EventArgs e)
@@ -572,15 +571,14 @@ namespace ProjeKargoWebForms
             }
 
             gvSube.SelectedIndex = -1;
+            ddlSubeIl.SelectedIndex = 0;
             tbSubeId.Text = string.Empty;
             tbSubeMahalle.Text = string.Empty;
             tbSubeSokak.Text = string.Empty;
             tbSubeAd.Text = string.Empty;
             tbSubeTel.Text = string.Empty;
-            ddlSubeIl.Items.Clear();
+            ddlSubeIlce.Items.Clear();
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlSubeIl.SelectedIndex = 0;
-            ddlSubeIlce.SelectedIndex = 0;
         }
 
         protected void gvSube_SelectedIndexChanged(object sender, EventArgs e)
