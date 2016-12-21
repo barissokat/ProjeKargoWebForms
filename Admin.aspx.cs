@@ -52,6 +52,8 @@ namespace ProjeKargoWebForms
                 gvSubeDataBind();
             }
         }
+
+        /*Kargo Başlangıcı*/
         private void gvKargoDataBind()
         {
             var kargolar = from t in db.Takipler
@@ -390,7 +392,7 @@ namespace ProjeKargoWebForms
                 gvKargoDataBind();
 
 
-                
+
             }
             catch (Exception)
             {
@@ -432,6 +434,82 @@ namespace ProjeKargoWebForms
             /**/
         }
 
+        protected void btnKargoSil_Click(object sender, EventArgs e)
+        {
+            Takip takip;
+            Kisi gKisi;
+            Adres gAdres;
+            Kisi aKisi;
+            Adres aAdres;
+            Kargo kargo;
+            try
+            {
+                var takipId = tbTakipId.Text;
+                if (takipId != "")
+                {
+                    takip = db.Takipler.Find(Convert.ToInt32(takipId));
+                    kargo = db.Kargolar.Find(takip.KargoId);
+                    db.Kargolar.Remove(kargo);
+                    gAdres = db.Adresler.Find(takip.AdresId);
+                    gKisi = (from gk in db.Kisiler where gk.AdresId == gAdres.Id select gk).SingleOrDefault();
+                    db.Kisiler.Remove(gKisi);
+                    db.Adresler.Remove(gAdres);
+                    aAdres = db.Adresler.Find(takip.AdresId1);
+                    aKisi = (from ak in db.Kisiler where ak.AdresId == aAdres.Id select ak).SingleOrDefault();
+                    db.Kisiler.Remove(aKisi);
+                    db.Adresler.Remove(aAdres);
+                    db.Takipler.Remove(takip);
+                    db.SaveChanges();
+                    lblKargoSonuc.Text = "Kargo başarıyla silinmiştir.";
+                }
+                else
+                {
+                    lblKargoSonuc.Text = "İlk önce silinecek kargoyu seçmelisiniz.";
+                }
+            }
+            catch (Exception)
+            {
+                lblKargoSonuc.Text = "İşlem başarısız oldu.";
+            }
+            gvKargoDataBind();
+
+            gvKargo.SelectedIndex = -1;
+            tbTakipId.Text = string.Empty;
+            tbAgirlik.Text = string.Empty;
+            tbYukseklik.Text = string.Empty;
+            tbEn.Text = string.Empty;
+            tbBoy.Text = string.Empty;
+            tbGonderenAd.Text = string.Empty;
+            tbGonderenSoyad.Text = string.Empty;
+            tbGonderenTel.Text = string.Empty;
+            ddlGonderenIl.SelectedIndex = 0;
+            ddlGonderenIlce.SelectedIndex = 0;
+            tbGonderenMahalle.Text = string.Empty;
+            tbGonderenSokak.Text = string.Empty;
+            tbGonderenApartman.Text = string.Empty;
+            tbGonderenNo.Text = string.Empty;
+            tbAliciAd.Text = string.Empty;
+            tbAliciSoyad.Text = string.Empty;
+            tbAliciTel.Text = string.Empty;
+            ddlAliciIl.SelectedIndex = 0;
+            ddlAliciIlce.SelectedIndex = 0;
+            tbAliciMahalle.Text = string.Empty;
+            tbAliciSokak.Text = string.Empty;
+            tbAliciApartman.Text = string.Empty;
+            tbAliciNo.Text = string.Empty;
+            lblKargoSonuc.Text = "";
+
+            /* GEÇİCİ ÇÖZÜM
+             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
+             * 
+             */
+            ddlGonderenIlce.Items.Clear();
+            ddlAliciIlce.Items.Clear();
+            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            /**/
+        }
+        /*Kargo Sonu*/
         protected void btnDurumDegis_Click(object sender, EventArgs e)
         {
             try
@@ -454,20 +532,20 @@ namespace ProjeKargoWebForms
 
         private void gvSubeDataBind()
         {
-            var subeler =  from s in db.Subeler
-                           join a in db.Adresler on s.AdresId equals a.Id
-                           join i in db.Iller on a.IlId equals i.Id
-                           join ie in db.Ilceler on a.IlceId equals ie.Id
-                           select new
-                           {
-                               SubeId = s.Id,
-                               İl = i.Ad,
-                               İlce = ie.Ad,
-                               Ad = s.Ad,
-                               Mahelle = a.Mahalle,
-                               Sokak = a.Sokak,
-                               Telefon = s.Tel
-                           };
+            var subeler = from s in db.Subeler
+                          join a in db.Adresler on s.AdresId equals a.Id
+                          join i in db.Iller on a.IlId equals i.Id
+                          join ie in db.Ilceler on a.IlceId equals ie.Id
+                          select new
+                          {
+                              SubeId = s.Id,
+                              İl = i.Ad,
+                              İlce = ie.Ad,
+                              Ad = s.Ad,
+                              Mahelle = a.Mahalle,
+                              Sokak = a.Sokak,
+                              Telefon = s.Tel
+                          };
             gvSube.DataSource = subeler.ToList();
             gvSube.DataBind();
         }
@@ -483,6 +561,7 @@ namespace ProjeKargoWebForms
             lblSubeSonuc.Text = string.Empty;
             ddlSubeIlce.Items.Clear();
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            tbSubeMahalle.Focus();
         }
 
         protected void ddlSubeIl_SelectedIndexChanged(object sender, EventArgs e)
@@ -585,7 +664,7 @@ namespace ProjeKargoWebForms
         {
             int selectedRowIndex = gvSube.SelectedIndex;
             GridViewRow row = gvSube.Rows[selectedRowIndex];
-            
+
             tbSubeId.Text = row.Cells[1].Text;
             tbSubeMahalle.Text = row.Cells[4].Text;
             tbSubeSokak.Text = row.Cells[5].Text;

@@ -226,7 +226,8 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()" />
+                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" />
+                <asp:Button ID="btnKargoSil" runat="server" Text="Sil" OnClick="btnKargoSil_Click" />
             </td>
             <td>
                 <asp:Label ID="lblKargoSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
