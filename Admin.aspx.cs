@@ -464,6 +464,7 @@ namespace ProjeKargoWebForms
             ddlDurum.SelectedIndex = 0;
         }
 
+        /*Şube Başı*/
         private void gvSubeDataBind()
         {
             var subeler = from s in db.Subeler
@@ -486,15 +487,7 @@ namespace ProjeKargoWebForms
 
         protected void btnSubeYeni_Click(object sender, EventArgs e)
         {
-            gvSube.SelectedIndex = -1;
-            ddlSubeIl.SelectedIndex = 0;
-            tbSubeMahalle.Text = string.Empty;
-            tbSubeSokak.Text = string.Empty;
-            tbSubeAd.Text = string.Empty;
-            tbSubeTel.Text = string.Empty;
-            lblSubeSonuc.Text = string.Empty;
-            ddlSubeIlce.Items.Clear();
-            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            clearSube();
             tbSubeMahalle.Focus();
         }
 
@@ -576,22 +569,13 @@ namespace ProjeKargoWebForms
                     lblSubeSonuc.Text = "Sube başarıyla güncellenmiştir.";
                 }
                 db.SaveChanges();
-                gvSubeDataBind();
             }
             catch (Exception)
             {
                 lblSubeSonuc.Text = "İşlem başarısız olmuştur.";
             }
-
-            gvSube.SelectedIndex = -1;
-            ddlSubeIl.SelectedIndex = 0;
-            tbSubeId.Text = string.Empty;
-            tbSubeMahalle.Text = string.Empty;
-            tbSubeSokak.Text = string.Empty;
-            tbSubeAd.Text = string.Empty;
-            tbSubeTel.Text = string.Empty;
-            ddlSubeIlce.Items.Clear();
-            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            gvSubeDataBind();
+            clearSube();
         }
 
         protected void gvSube_SelectedIndexChanged(object sender, EventArgs e)
@@ -649,7 +633,10 @@ namespace ProjeKargoWebForms
                 lblSubeSonuc.Text = "İşlem başarısız oldu.";
             }
             gvSubeDataBind();
-
+            clearSube();
+        }
+        private void clearSube()
+        {
             gvSube.SelectedIndex = -1;
             ddlSubeIl.SelectedIndex = 0;
             tbSubeId.Text = string.Empty;
@@ -666,5 +653,6 @@ namespace ProjeKargoWebForms
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
         }
+        /*Şube Sonu*/
     }
 }
