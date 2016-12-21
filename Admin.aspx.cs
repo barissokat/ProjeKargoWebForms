@@ -191,41 +191,7 @@ namespace ProjeKargoWebForms
 
         protected void btnYeniKargo_Click(object sender, EventArgs e)
         {
-            gvKargo.SelectedIndex = -1;
-            tbTakipId.Text = string.Empty;
-            tbAgirlik.Text = string.Empty;
-            tbYukseklik.Text = string.Empty;
-            tbEn.Text = string.Empty;
-            tbBoy.Text = string.Empty;
-            tbGonderenAd.Text = string.Empty;
-            tbGonderenSoyad.Text = string.Empty;
-            tbGonderenTel.Text = string.Empty;
-            ddlGonderenIl.SelectedIndex = 0;
-            ddlGonderenIlce.SelectedIndex = 0;
-            tbGonderenMahalle.Text = string.Empty;
-            tbGonderenSokak.Text = string.Empty;
-            tbGonderenApartman.Text = string.Empty;
-            tbGonderenNo.Text = string.Empty;
-            tbAliciAd.Text = string.Empty;
-            tbAliciSoyad.Text = string.Empty;
-            tbAliciTel.Text = string.Empty;
-            ddlAliciIl.SelectedIndex = 0;
-            ddlAliciIlce.SelectedIndex = 0;
-            tbAliciMahalle.Text = string.Empty;
-            tbAliciSokak.Text = string.Empty;
-            tbAliciApartman.Text = string.Empty;
-            tbAliciNo.Text = string.Empty;
-            lblKargoSonuc.Text = "";
-            /* GEÇİCİ ÇÖZÜM
-             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
-             * 
-             */
-            ddlGonderenIlce.Items.Clear();
-            ddlAliciIlce.Items.Clear();
-            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            /**/
-
+            clearKargo();
             tbAgirlik.Focus();
         }
 
@@ -389,49 +355,13 @@ namespace ProjeKargoWebForms
                     lblKargoSonuc.Text = "Kargo başarıyla güncellendi.";
                 }
                 db.SaveChanges();
-                gvKargoDataBind();
-
-
-
             }
             catch (Exception)
             {
                 lblKargoSonuc.Text = "İşlem başarısız oldu.";
             }
-
-            gvKargo.SelectedIndex = -1;
-            tbTakipId.Text = string.Empty;
-            tbAgirlik.Text = string.Empty;
-            tbYukseklik.Text = string.Empty;
-            tbEn.Text = string.Empty;
-            tbBoy.Text = string.Empty;
-            tbGonderenAd.Text = string.Empty;
-            tbGonderenSoyad.Text = string.Empty;
-            tbGonderenTel.Text = string.Empty;
-            ddlGonderenIl.SelectedIndex = 0;
-            ddlGonderenIlce.SelectedIndex = 0;
-            tbGonderenMahalle.Text = string.Empty;
-            tbGonderenSokak.Text = string.Empty;
-            tbGonderenApartman.Text = string.Empty;
-            tbGonderenNo.Text = string.Empty;
-            tbAliciAd.Text = string.Empty;
-            tbAliciSoyad.Text = string.Empty;
-            tbAliciTel.Text = string.Empty;
-            ddlAliciIl.SelectedIndex = 0;
-            ddlAliciIlce.SelectedIndex = 0;
-            tbAliciMahalle.Text = string.Empty;
-            tbAliciSokak.Text = string.Empty;
-            tbAliciApartman.Text = string.Empty;
-            tbAliciNo.Text = string.Empty;
-            /* GEÇİCİ ÇÖZÜM
-             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
-             * 
-             */
-            ddlGonderenIlce.Items.Clear();
-            ddlAliciIlce.Items.Clear();
-            ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
-            /**/
+            gvKargoDataBind();
+            clearKargo();
         }
 
         protected void btnKargoSil_Click(object sender, EventArgs e)
@@ -472,7 +402,11 @@ namespace ProjeKargoWebForms
                 lblKargoSonuc.Text = "İşlem başarısız oldu.";
             }
             gvKargoDataBind();
+            clearKargo();
+        }
 
+        private void clearKargo()
+        {
             gvKargo.SelectedIndex = -1;
             tbTakipId.Text = string.Empty;
             tbAgirlik.Text = string.Empty;
@@ -509,6 +443,7 @@ namespace ProjeKargoWebForms
             /**/
         }
         /*Kargo Sonu*/
+
         protected void btnDurumDegis_Click(object sender, EventArgs e)
         {
             try
