@@ -497,7 +497,6 @@ namespace ProjeKargoWebForms
             tbAliciSokak.Text = string.Empty;
             tbAliciApartman.Text = string.Empty;
             tbAliciNo.Text = string.Empty;
-            lblKargoSonuc.Text = "";
 
             /* GEÇİCİ ÇÖZÜM
              * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
@@ -666,9 +665,9 @@ namespace ProjeKargoWebForms
             GridViewRow row = gvSube.Rows[selectedRowIndex];
 
             tbSubeId.Text = row.Cells[1].Text;
-            tbSubeMahalle.Text = row.Cells[4].Text;
-            tbSubeSokak.Text = row.Cells[5].Text;
-            tbSubeAd.Text = row.Cells[6].Text;
+            tbSubeAd.Text = row.Cells[4].Text;
+            tbSubeMahalle.Text = row.Cells[5].Text;
+            tbSubeSokak.Text = row.Cells[6].Text;
             tbSubeTel.Text = row.Cells[7].Text;
 
             string subeIl = row.Cells[2].Text;
@@ -687,6 +686,50 @@ namespace ProjeKargoWebForms
             var selectedSubeIlce = (from ie in db.Ilceler where ie.IlId == idSubeIl && ie.Ad == subeIlce select ie).SingleOrDefault();
             int idSubeIlce = selectedSubeIlce.Id;
             ddlSubeIlce.SelectedIndex = Convert.ToInt32(idSubeIlce);
+        }
+
+        protected void btnSubeSil_Click(object sender, EventArgs e)
+        {
+            Sube sube;
+            Adres adres;
+            try
+            {
+                var subeId = tbSubeId.Text;
+                if (subeId != "")
+                {
+                    sube = db.Subeler.Find(Convert.ToInt32(subeId));
+                    adres = db.Adresler.Find(sube.AdresId);
+                    db.Adresler.Remove(adres);
+                    db.Subeler.Remove(sube);
+                    db.SaveChanges();
+                    lblSubeSonuc.Text = "Şube başarıyla silinmiştir.";
+                }
+                else
+                {
+                    lblSubeSonuc.Text = "İlk önce silinecek şubeyi seçmelisiniz.";
+                }
+            }
+            catch (Exception)
+            {
+                lblSubeSonuc.Text = "İşlem başarısız oldu.";
+            }
+            gvSubeDataBind();
+
+            gvSube.SelectedIndex = -1;
+            ddlSubeIl.SelectedIndex = 0;
+            tbSubeId.Text = string.Empty;
+            tbSubeMahalle.Text = string.Empty;
+            tbSubeSokak.Text = string.Empty;
+            tbSubeAd.Text = string.Empty;
+            tbSubeTel.Text = string.Empty;
+            lblSubeSonuc.Text = string.Empty;
+            /* GEÇİCİ ÇÖZÜM
+             * Yukarıdaki birden fazla il eklendiğinde oluşabilecek hata sonrası bu kısmıda düzelt.
+             * 
+             */
+            ddlSubeIlce.Items.Clear();
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            /**/
         }
     }
 }

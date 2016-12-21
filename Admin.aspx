@@ -352,6 +352,7 @@
         <tr>
             <td>
                 <asp:Button ID="btnSube" runat="server" Text="Kaydet" OnClick="btnSube_Click" />
+                <asp:Button ID="btnSubeSil" runat="server" Text="Sil" OnClick="btnSubeSil_Click" />
             </td>
             <td>
                 <asp:Label ID="lblSubeSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
