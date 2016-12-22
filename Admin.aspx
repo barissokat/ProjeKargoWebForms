@@ -387,30 +387,37 @@
             if (ktbAgirlik.value == "") {
                 mesaj = "Lütfen ağırlık giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAgirlik.ClientID%>').focus();
             }
             else if (ktbYukseklik.value == "") {
                 mesaj = "Lütfen yükseklik giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbYukseklik.ClientID%>').focus();
             }
             else if (ktbEn.value == "") {
                 mesaj = "Lütfen en giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbBoy.ClientID%>').focus();
             }
             else if (ktbBoy.value == "") {
                 mesaj = "Lütfen boy giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenAd.ClientID%>').focus();
             }
             else if (ktbgAd.value == "") {
                 mesaj = "Lütfen gönderen için ad giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenSoyad.ClientID%>').focus();
             }
             else if (ktbgSoyad.value == "") {
                 mesaj = "Lütfen gönderen için soyad giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenTel.ClientID%>').focus();
             }
             else if (ktbgTel.value == "") {
                 mesaj = "Lütfen gönderen için tel giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbTakipNo.ClientID%>').focus();
             }
             else if (kddlgIl.selectedIndex <= 0) {
                 mesaj = "Lütfen gönderen için il seçiniz.";
@@ -423,30 +430,37 @@
             else if (ktbgMah.value == "") {
                 mesaj = "Lütfen gönderen için mahalle giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenMahalle.ClientID%>').focus();
             }
             else if (ktbgSok.value == "") {
                 mesaj = "Lütfen gönderen için sokak giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenSokak.ClientID%>').focus();
             }
             else if (ktbgApart.value == "") {
                 mesaj = "Lütfen gönderen için apartman giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenApartman.ClientID%>').focus();
             }
             else if (ktbgNo.value == "") {
                 mesaj = "Lütfen gönderen için no giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbGonderenNo.ClientID%>').focus();
             }
             else if (ktbaAd.value == "") {
                 mesaj = "Lütfen alıcı için ad giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciAd.ClientID%>').focus();
             }
             else if (ktbaSoyad.value == "") {
                 mesaj = "Lütfen alıcı için soyad giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciSoyad.ClientID%>').focus();
             }
             else if (ktbaTel.value == "") {
                 mesaj = "Lütfen alıcı için tel giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciTel.ClientID%>').focus();
             }
             else if (kddlaIl.selectedIndex <= 0) {
                 mesaj = "Lütfen alıcı için il seçiniz.";
@@ -459,18 +473,22 @@
             else if (ktbaMah.value == "") {
                 mesaj = "Lütfen alıcı için mahalle giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciMahalle.ClientID%>').focus();
             }
             else if (ktbaSok.value == "") {
                 mesaj = "Lütfen alıcı için sokak giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciSokak.ClientID%>').focus();
             }
             else if (ktbaApart.value == "") {
                 mesaj = "Lütfen alıcı için apartman giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciApartman.ClientID%>').focus();
             }
             else if (ktbaNo.value == "") {
                 mesaj = "Lütfen alıcı için no giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbAliciNo.ClientID%>').focus();
             }
             else
                 mesaj = "";
