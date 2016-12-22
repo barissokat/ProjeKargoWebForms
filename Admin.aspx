@@ -261,7 +261,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle" OnClick="btnDurumDegis_Click" />
+                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle" OnClick="btnDurumDegis_Click" OnClientClick="return kontrolDurum()"/>
             </td>
             <td>
                 <asp:Label ID="lblDurumSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
@@ -360,6 +360,26 @@
         </tr>
     </table>
     <script type="text/javascript">
+        function kontrolDurum() {
+            var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
+            var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
+            var mesaj = "";
+            if (ktbTakipNo.value == "") {
+                mesaj = "Lütfen durum değişikliği için takip no giriniz.";
+                alert(mesaj);
+            }
+            else if (kddlDurum.selectedIndex <= 0) {
+                mesaj = "Lütfen kargo için durum seçiniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true
+            else
+                return false
+        }
+
         function kontrolSube() {
             var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
                 var kddlsIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
