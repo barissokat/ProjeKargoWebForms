@@ -379,18 +379,22 @@
                 else if (ktbsMah.value == "") {
                     mesaj = "Lütfen sube için mahalle giriniz.";
                     alert(mesaj);
+                    document.getElementById('<%=tbSubeMahalle.ClientID%>').focus();
                 }
                 else if (ktbsSok.value == "") {
                     mesaj = "Lütfen sube için sokak giriniz.";
                     alert(mesaj);
+                    document.getElementById('<%=tbSubeSokak.ClientID%>').focus();
                 }
                 else if (ktbsAd.value == "") {
                     mesaj = "Lütfen sube için ad giriniz.";
                     alert(mesaj);
+                    document.getElementById('<%=tbSubeAd.ClientID%>').focus();
                 }
                 else if (ktbsTel.value == "") {
                     mesaj = "Lütfen sube için tel giriniz.";
                     alert(mesaj);
+                    document.getElementById('<%=tbSubeTel.ClientID%>').focus();
                 }
                 else
                     mesaj = "";
