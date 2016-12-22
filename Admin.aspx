@@ -261,7 +261,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle" OnClick="btnDurumDegis_Click" OnClientClick="return kontrolDurum()"/>
+                <asp:Button ID="btnDurumDegis" runat="server" Text="Güncelle" OnClick="btnDurumDegis_Click" OnClientClick="return kontrolDurum()" />
             </td>
             <td>
                 <asp:Label ID="lblDurumSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
@@ -351,7 +351,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnSube" runat="server" Text="Kaydet" OnClick="btnSube_Click" OnClientClick="return kontrolSube()"/>
+                <asp:Button ID="btnSube" runat="server" Text="Kaydet" OnClick="btnSube_Click" OnClientClick="return kontrolSube()" />
                 <asp:Button ID="btnSubeSil" runat="server" Text="Sil" OnClick="btnSubeSil_Click" />
             </td>
             <td>
@@ -367,6 +367,7 @@
             if (ktbTakipNo.value == "") {
                 mesaj = "Lütfen durum değişikliği için takip no giriniz.";
                 alert(mesaj);
+                document.getElementById('<%=tbTakipNo.ClientID%>').focus();
             }
             else if (kddlDurum.selectedIndex <= 0) {
                 mesaj = "Lütfen kargo için durum seçiniz.";
@@ -382,24 +383,24 @@
 
         function kontrolSube() {
             var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
-                var kddlsIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
-                var ktbsMah = document.getElementById('<%=tbSubeMahalle.ClientID%>');
-                var ktbsSok = document.getElementById('<%=tbSubeSokak.ClientID%>');
-                var ktbsAd = document.getElementById('<%=tbSubeAd.ClientID%>');
-                var ktbsTel = document.getElementById('<%=tbSubeTel.ClientID%>');
-                var mesaj = "";
-                if (kddlsIl.selectedIndex <= 0) {
-                    mesaj = "Lütfen sube için il seçiniz.";
-                    alert(mesaj);
-                }
-                else if (kddlsIlce.selectedIndex <= 0) {
-                    mesaj = "Lütfen sube için ilce seçiniz.";
-                    alert(mesaj);
-                }
-                else if (ktbsMah.value == "") {
-                    mesaj = "Lütfen sube için mahalle giriniz.";
-                    alert(mesaj);
-                    document.getElementById('<%=tbSubeMahalle.ClientID%>').focus();
+            var kddlsIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
+            var ktbsMah = document.getElementById('<%=tbSubeMahalle.ClientID%>');
+            var ktbsSok = document.getElementById('<%=tbSubeSokak.ClientID%>');
+            var ktbsAd = document.getElementById('<%=tbSubeAd.ClientID%>');
+            var ktbsTel = document.getElementById('<%=tbSubeTel.ClientID%>');
+            var mesaj = "";
+            if (kddlsIl.selectedIndex <= 0) {
+                mesaj = "Lütfen sube için il seçiniz.";
+                alert(mesaj);
+            }
+            else if (kddlsIlce.selectedIndex <= 0) {
+                mesaj = "Lütfen sube için ilce seçiniz.";
+                alert(mesaj);
+            }
+            else if (ktbsMah.value == "") {
+                mesaj = "Lütfen sube için mahalle giriniz.";
+                alert(mesaj);
+                document.getElementById('<%=tbSubeMahalle.ClientID%>').focus();
                 }
                 else if (ktbsSok.value == "") {
                     mesaj = "Lütfen sube için sokak giriniz.";
@@ -418,10 +419,10 @@
                 }
                 else
                     mesaj = "";
-                if (mesaj == "")
-                    return true
-                else
-                    return false
-            }
+    if (mesaj == "")
+        return true
+    else
+        return false
+}
     </script>
 </asp:Content>
