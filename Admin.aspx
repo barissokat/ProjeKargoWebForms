@@ -226,7 +226,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" />
+                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()"/>
                 <asp:Button ID="btnKargoSil" runat="server" Text="Sil" OnClick="btnKargoSil_Click" />
             </td>
             <td>
@@ -360,6 +360,126 @@
         </tr>
     </table>
     <script type="text/javascript">
+        function kontrolTakip() {
+            var ktbAgirlik = document.getElementById('<%=tbAgirlik.ClientID%>');
+            var ktbYukseklik = document.getElementById('<%=tbYukseklik.ClientID%>');
+            var ktbEn = document.getElementById('<%=tbEn.ClientID%>');
+            var ktbBoy = document.getElementById('<%=tbBoy.ClientID%>');
+            var ktbgAd = document.getElementById('<%=tbGonderenAd.ClientID%>');
+            var ktbgSoyad = document.getElementById('<%=tbGonderenSoyad.ClientID%>');
+            var ktbgTel = document.getElementById('<%=tbGonderenTel.ClientID%>');
+            var kddlgIl = document.getElementById('<%=ddlGonderenIl.ClientID%>');
+            var kddlgIlce = document.getElementById('<%=ddlGonderenIlce.ClientID%>');
+            var ktbgMah = document.getElementById('<%=tbGonderenMahalle.ClientID%>');
+            var ktbgSok = document.getElementById('<%=tbGonderenSokak.ClientID%>');
+            var ktbgApart = document.getElementById('<%=tbGonderenApartman.ClientID%>');
+            var ktbgNo = document.getElementById('<%=tbGonderenNo.ClientID%>');
+            var ktbaAd = document.getElementById('<%=tbAliciAd.ClientID%>');
+            var ktbaSoyad = document.getElementById('<%=tbAliciSoyad.ClientID%>');
+            var ktbaTel = document.getElementById('<%=tbAliciTel.ClientID%>');
+            var kddlaIl = document.getElementById('<%=ddlAliciIl.ClientID%>');
+            var kddlaIlce = document.getElementById('<%=ddlAliciIlce.ClientID%>');
+            var ktbaMah = document.getElementById('<%=tbAliciMahalle.ClientID%>');
+            var ktbaSok = document.getElementById('<%=tbAliciSokak.ClientID%>');
+            var ktbaApart = document.getElementById('<%=tbAliciApartman.ClientID%>');
+            var ktbaNo = document.getElementById('<%=tbAliciNo.ClientID%>');
+            var mesaj = "";
+            if (ktbAgirlik.value == "") {
+                mesaj = "Lütfen ağırlık giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbYukseklik.value == "") {
+                mesaj = "Lütfen yükseklik giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbEn.value == "") {
+                mesaj = "Lütfen en giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbBoy.value == "") {
+                mesaj = "Lütfen boy giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgAd.value == "") {
+                mesaj = "Lütfen gönderen için ad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgSoyad.value == "") {
+                mesaj = "Lütfen gönderen için soyad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgTel.value == "") {
+                mesaj = "Lütfen gönderen için tel giriniz.";
+                alert(mesaj);
+            }
+            else if (kddlgIl.selectedIndex <= 0) {
+                mesaj = "Lütfen gönderen için il seçiniz.";
+                alert(mesaj);
+            }
+            else if (kddlgIlce.selectedIndex <= 0) {
+                mesaj = "Lütfen gönderen için ilçe seçiniz.";
+                alert(mesaj);
+            }
+            else if (ktbgMah.value == "") {
+                mesaj = "Lütfen gönderen için mahalle giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgSok.value == "") {
+                mesaj = "Lütfen gönderen için sokak giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgApart.value == "") {
+                mesaj = "Lütfen gönderen için apartman giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbgNo.value == "") {
+                mesaj = "Lütfen gönderen için no giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaAd.value == "") {
+                mesaj = "Lütfen alıcı için ad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaSoyad.value == "") {
+                mesaj = "Lütfen alıcı için soyad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaTel.value == "") {
+                mesaj = "Lütfen alıcı için tel giriniz.";
+                alert(mesaj);
+            }
+            else if (kddlaIl.selectedIndex <= 0) {
+                mesaj = "Lütfen alıcı için il seçiniz.";
+                alert(mesaj);
+            }
+            else if (kddlaIlce.selectedIndex <= 0) {
+                mesaj = "Lütfen alıcı için ilçe seçiniz.";
+                alert(mesaj);
+            }
+            else if (ktbaMah.value == "") {
+                mesaj = "Lütfen alıcı için mahalle giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaSok.value == "") {
+                mesaj = "Lütfen alıcı için sokak giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaApart.value == "") {
+                mesaj = "Lütfen alıcı için apartman giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbaNo.value == "") {
+                mesaj = "Lütfen alıcı için no giriniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true;
+            else
+                return false;
+        }
+
         function kontrolDurum() {
             var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
             var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
