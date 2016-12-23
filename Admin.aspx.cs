@@ -130,29 +130,29 @@ namespace ProjeKargoWebForms
         {
             int selectedRowIndex = gvKargo.SelectedIndex;
             GridViewRow row = gvKargo.Rows[selectedRowIndex];
-            tbTakipId.Text = row.Cells[1].Text;
-            tbGonderenAd.Text = row.Cells[2].Text;
-            tbGonderenSoyad.Text = row.Cells[3].Text;
-            tbGonderenTel.Text = row.Cells[4].Text;
-            tbGonderenMahalle.Text = row.Cells[7].Text;
-            tbGonderenSokak.Text = row.Cells[8].Text;
-            tbGonderenApartman.Text = row.Cells[9].Text;
-            tbGonderenNo.Text = row.Cells[10].Text;
-            tbAliciAd.Text = row.Cells[11].Text;
-            tbAliciSoyad.Text = row.Cells[12].Text;
-            tbAliciTel.Text = row.Cells[13].Text;
-            tbAliciMahalle.Text = row.Cells[16].Text;
-            tbAliciSokak.Text = row.Cells[17].Text;
-            tbAliciApartman.Text = row.Cells[18].Text;
-            tbAliciNo.Text = row.Cells[19].Text;
-            tbAgirlik.Text = row.Cells[20].Text;
-            tbYukseklik.Text = row.Cells[21].Text;
-            tbEn.Text = row.Cells[22].Text;
-            tbBoy.Text = row.Cells[23].Text;
+            tbTakipId.Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
+            tbGonderenAd.Text = HttpUtility.HtmlDecode(row.Cells[2].Text);
+            tbGonderenSoyad.Text = HttpUtility.HtmlDecode(row.Cells[3].Text);
+            tbGonderenTel.Text = HttpUtility.HtmlDecode(row.Cells[4].Text);
+            tbGonderenMahalle.Text = HttpUtility.HtmlDecode(row.Cells[7].Text);
+            tbGonderenSokak.Text = HttpUtility.HtmlDecode(row.Cells[8].Text);
+            tbGonderenApartman.Text = HttpUtility.HtmlDecode(row.Cells[9].Text);
+            tbGonderenNo.Text = HttpUtility.HtmlDecode(row.Cells[10].Text);
+            tbAliciAd.Text = HttpUtility.HtmlDecode(row.Cells[11].Text);
+            tbAliciSoyad.Text = HttpUtility.HtmlDecode(row.Cells[12].Text);
+            tbAliciTel.Text = HttpUtility.HtmlDecode(row.Cells[13].Text);
+            tbAliciMahalle.Text = HttpUtility.HtmlDecode(row.Cells[16].Text);
+            tbAliciSokak.Text = HttpUtility.HtmlDecode(row.Cells[17].Text);
+            tbAliciApartman.Text = HttpUtility.HtmlDecode(row.Cells[18].Text);
+            tbAliciNo.Text = HttpUtility.HtmlDecode(row.Cells[19].Text);
+            tbAgirlik.Text = HttpUtility.HtmlDecode(row.Cells[20].Text);
+            tbYukseklik.Text = HttpUtility.HtmlDecode(row.Cells[21].Text);
+            tbEn.Text = HttpUtility.HtmlDecode(row.Cells[22].Text);
+            tbBoy.Text = HttpUtility.HtmlDecode(row.Cells[23].Text);
             /* GEÇİCİ ÇÖZÜM
              * Birden fazla il eklendiği zaman sıkıntı çıkarabilir. 
              * Kesin kontrol et değiştir.*/
-            string gil = row.Cells[5].Text;
+            string gil = HttpUtility.HtmlDecode(row.Cells[5].Text);
             var selectedGIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idgIl = selectedGIl.Id;
             ddlGonderenIl.SelectedIndex = idgIl;
@@ -164,13 +164,13 @@ namespace ProjeKargoWebForms
             ddlGonderenIlce.DataBind();
             ddlGonderenIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
-            string gilce = row.Cells[6].Text;
+            string gilce = HttpUtility.HtmlDecode(row.Cells[6].Text);
             var selectedGIlce = (from ie in db.Ilceler where ie.IlId == idgIl && ie.Ad == gilce select ie).SingleOrDefault();
             int idgIlce = selectedGIlce.Id;
             ddlGonderenIlce.SelectedIndex = Convert.ToInt32(idgIlce);
 
 
-            string ail = row.Cells[14].Text;
+            string ail = HttpUtility.HtmlDecode(row.Cells[14].Text);
             var selectedAIl = (from i in db.Iller where i.Ad == gil select i).SingleOrDefault();
             int idaIl = selectedAIl.Id;
             ddlAliciIl.SelectedIndex = Convert.ToInt32(idaIl);
@@ -182,7 +182,7 @@ namespace ProjeKargoWebForms
             ddlAliciIlce.DataBind();
             ddlAliciIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
-            string ailce = row.Cells[15].Text;
+            string ailce = HttpUtility.HtmlDecode(row.Cells[15].Text);
             var selectedAIlce = (from ie in db.Ilceler where ie.IlId == idaIl && ie.Ad == ailce select ie).SingleOrDefault();
             int idaIlce = selectedAIlce.Id;
             ddlAliciIlce.SelectedIndex = Convert.ToInt32(idaIlce);
@@ -583,13 +583,13 @@ namespace ProjeKargoWebForms
             int selectedRowIndex = gvSube.SelectedIndex;
             GridViewRow row = gvSube.Rows[selectedRowIndex];
 
-            tbSubeId.Text = row.Cells[1].Text;
-            tbSubeAd.Text = row.Cells[4].Text;
-            tbSubeMahalle.Text = row.Cells[5].Text;
-            tbSubeSokak.Text = row.Cells[6].Text;
-            tbSubeTel.Text = row.Cells[7].Text;
+            tbSubeId.Text = HttpUtility.HtmlDecode(row.Cells[1].Text);
+            tbSubeAd.Text = HttpUtility.HtmlDecode(row.Cells[4].Text);
+            tbSubeMahalle.Text = HttpUtility.HtmlDecode(row.Cells[5].Text);
+            tbSubeSokak.Text = HttpUtility.HtmlDecode(row.Cells[6].Text);
+            tbSubeTel.Text = HttpUtility.HtmlDecode(row.Cells[7].Text);
 
-            string subeIl = row.Cells[2].Text;
+            string subeIl = HttpUtility.HtmlDecode(row.Cells[2].Text);
             var selectedSubeIl = (from i in db.Iller where i.Ad == subeIl select i).SingleOrDefault();
             int idSubeIl = selectedSubeIl.Id;
             ddlSubeIl.SelectedIndex = idSubeIl;
@@ -601,7 +601,7 @@ namespace ProjeKargoWebForms
             ddlSubeIlce.DataBind();
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
-            string subeIlce = row.Cells[3].Text;
+            string subeIlce = HttpUtility.HtmlDecode(row.Cells[3].Text);
             var selectedSubeIlce = (from ie in db.Ilceler where ie.IlId == idSubeIl && ie.Ad == subeIlce select ie).SingleOrDefault();
             int idSubeIlce = selectedSubeIlce.Id;
             ddlSubeIlce.SelectedIndex = Convert.ToInt32(idSubeIlce);
