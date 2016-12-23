@@ -26,10 +26,31 @@ namespace ProjeKargoWebForms
                 if (koid == true)
                 {
                     var tid = Convert.ToInt32(tbTakipNo.Text);
-                    Takip Takip = db.Takipler.Find(tid);
-                    if (Takip != null)
+                    Takip takip = db.Takipler.Find(tid);
+                    if (takip != null)
                     {
-                        lblTakipSonuc.Text = Takip.Durum.Ad.ToString();
+                        if (takip.DurumId == 1)
+                        {
+                            var sonuc = (from t in db.Takipler
+                                     join a in db.Adresler on t.AdresId equals a.Id
+                                     join ie in db.Ilceler on a.IlceId equals ie.Id
+                                     where t.Id == tid
+                                     select new { ie.Ad }).SingleOrDefault();
+                            lblTakipSonuc.Text = sonuc.Ad.ToString() + "'da";
+                        }
+                        else if (takip.DurumId == 3)
+                        {
+                            var sonuc = (from t in db.Takipler
+                                         join a in db.Adresler on t.AdresId1 equals a.Id
+                                         join ie in db.Ilceler on a.IlceId equals ie.Id
+                                         where t.Id == tid
+                                         select new { ie.Ad }).SingleOrDefault();
+                            lblTakipSonuc.Text = sonuc.Ad.ToString() + "'da";
+                        }
+                        else
+                        {
+                            lblTakipSonuc.Text = takip.Durum.Ad.ToString();
+                        }
                     }
                     else
                         lblTakipSonuc.Text = "Takip numarasını kontrol ediniz.";
