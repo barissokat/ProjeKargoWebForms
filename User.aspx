@@ -32,4 +32,20 @@
             </td>
         </tr>
     </table>
+    <script type="text/javascript">
+        function kontrolKargo() {
+            var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
+            var mesaj = "";
+            if (ktbTakipNo.value == "") {
+                mesaj = "Lütfen kargo takip numarasını giriniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true;
+            else
+                return false;
+        }
+    </script>
 </asp:Content>
