@@ -9,6 +9,7 @@
             Herhangi bir kargo bulunamadı..
         </EmptyDataTemplate>
     </asp:GridView>
+
     <table style="width: 100%;">
         <tr>
             <td>
@@ -19,12 +20,6 @@
         <tr>
             <td>
                 <asp:Button ID="btnYeniKargo" runat="server" Text="Yeni Kargo" OnClick="btnYeniKargo_Click" />
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label1" runat="server" Text="Kargo İçerik" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
             <td>&nbsp;</td>
         </tr>
@@ -226,7 +221,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()"/>
+                <asp:Button ID="btnKargo" runat="server" Text="Kaydet" OnClick="btnKargo_Click" OnClientClick="return kontrolTakip()" />
                 <asp:Button ID="btnKargoSil" runat="server" Text="Sil" OnClick="btnKargoSil_Click" />
             </td>
             <td>
@@ -397,27 +392,27 @@
             else if (ktbEn.value == "") {
                 mesaj = "Lütfen en giriniz.";
                 alert(mesaj);
-                document.getElementById('<%=tbBoy.ClientID%>').focus();
+                document.getElementById('<%=tbEn.ClientID%>').focus();
             }
             else if (ktbBoy.value == "") {
                 mesaj = "Lütfen boy giriniz.";
                 alert(mesaj);
-                document.getElementById('<%=tbGonderenAd.ClientID%>').focus();
+                document.getElementById('<%=tbBoy.ClientID%>').focus();
             }
             else if (ktbgAd.value == "") {
                 mesaj = "Lütfen gönderen için ad giriniz.";
                 alert(mesaj);
-                document.getElementById('<%=tbGonderenSoyad.ClientID%>').focus();
+                document.getElementById('<%=tbGonderenAd.ClientID%>').focus();
             }
             else if (ktbgSoyad.value == "") {
                 mesaj = "Lütfen gönderen için soyad giriniz.";
                 alert(mesaj);
-                document.getElementById('<%=tbGonderenTel.ClientID%>').focus();
+                document.getElementById('<%=tbGonderenSoyad.ClientID%>').focus();
             }
             else if (ktbgTel.value == "") {
                 mesaj = "Lütfen gönderen için tel giriniz.";
                 alert(mesaj);
-                document.getElementById('<%=tbTakipNo.ClientID%>').focus();
+                document.getElementById('<%=tbGonderenTel.ClientID%>').focus();
             }
             else if (kddlgIl.selectedIndex <= 0) {
                 mesaj = "Lütfen gönderen için il seçiniz.";
@@ -492,35 +487,34 @@
             }
             else
                 mesaj = "";
-            if (mesaj == "")
-                return true;
-            else
-                return false;
-        }
+    if (mesaj == "")
+        return true;
+    else
+        return false;
+}
+function kontrolDurum() {
+    var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
+    var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
+    var mesaj = "";
+    if (ktbTakipNo.value == "") {
+        mesaj = "Lütfen durum değişikliği için takip no giriniz.";
+        alert(mesaj);
+        document.getElementById('<%=tbTakipNo.ClientID%>').focus();
+    }
+    else if (kddlDurum.selectedIndex <= 0) {
+        mesaj = "Lütfen kargo için durum seçiniz.";
+        alert(mesaj);
+    }
+    else
+        mesaj = "";
+    if (mesaj == "")
+        return true
+    else
+        return false
+}
 
-        function kontrolDurum() {
-            var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
-            var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
-            var mesaj = "";
-            if (ktbTakipNo.value == "") {
-                mesaj = "Lütfen durum değişikliği için takip no giriniz.";
-                alert(mesaj);
-                document.getElementById('<%=tbTakipNo.ClientID%>').focus();
-            }
-            else if (kddlDurum.selectedIndex <= 0) {
-                mesaj = "Lütfen kargo için durum seçiniz.";
-                alert(mesaj);
-            }
-            else
-                mesaj = "";
-            if (mesaj == "")
-                return true
-            else
-                return false
-        }
-
-        function kontrolSube() {
-            var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
+function kontrolSube() {
+    var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
             var kddlsIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
             var ktbsMah = document.getElementById('<%=tbSubeMahalle.ClientID%>');
             var ktbsSok = document.getElementById('<%=tbSubeSokak.ClientID%>');
@@ -539,24 +533,24 @@
                 mesaj = "Lütfen sube için mahalle giriniz.";
                 alert(mesaj);
                 document.getElementById('<%=tbSubeMahalle.ClientID%>').focus();
-                }
-                else if (ktbsSok.value == "") {
-                    mesaj = "Lütfen sube için sokak giriniz.";
-                    alert(mesaj);
-                    document.getElementById('<%=tbSubeSokak.ClientID%>').focus();
-                }
-                else if (ktbsAd.value == "") {
-                    mesaj = "Lütfen sube için ad giriniz.";
-                    alert(mesaj);
-                    document.getElementById('<%=tbSubeAd.ClientID%>').focus();
-                }
-                else if (ktbsTel.value == "") {
-                    mesaj = "Lütfen sube için tel giriniz.";
-                    alert(mesaj);
-                    document.getElementById('<%=tbSubeTel.ClientID%>').focus();
-                }
-                else
-                    mesaj = "";
+            }
+            else if (ktbsSok.value == "") {
+                mesaj = "Lütfen sube için sokak giriniz.";
+                alert(mesaj);
+                document.getElementById('<%=tbSubeSokak.ClientID%>').focus();
+                    }
+                    else if (ktbsAd.value == "") {
+                        mesaj = "Lütfen sube için ad giriniz.";
+                        alert(mesaj);
+                        document.getElementById('<%=tbSubeAd.ClientID%>').focus();
+                    }
+                    else if (ktbsTel.value == "") {
+                        mesaj = "Lütfen sube için tel giriniz.";
+                        alert(mesaj);
+                        document.getElementById('<%=tbSubeTel.ClientID%>').focus();
+                    }
+                    else
+                        mesaj = "";
     if (mesaj == "")
         return true
     else

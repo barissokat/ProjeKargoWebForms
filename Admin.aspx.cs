@@ -653,6 +653,11 @@ namespace ProjeKargoWebForms
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
         }
+
         /*Şube Sonu*/
+        protected void btnKargoEkle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Admins/Kargo.aspx");
+        }
     }
 }
