@@ -95,5 +95,24 @@
             else
                 return false;
         }
+        function kontrolSube() {
+            var kddlSubeIli = document.getElementById('<%=ddlSubeIli.ClientID%>');
+            var kddlSubeIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
+            var mesaj = "";
+            if (kddlSubeIli.selectedIndex <= 0) {
+                mesaj = "Lütfen şube için il seçiniz.";
+                alert(mesaj);
+            }
+            else if (kddlSubeIlce.selectedIndex <= 0) {
+                mesaj = "Lütfen şube için ilçe seçiniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true
+            else
+                return false
+        }
     </script>
 </asp:Content>
