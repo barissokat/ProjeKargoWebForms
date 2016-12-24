@@ -14,7 +14,18 @@ namespace ProjeKargoWebForms
         private KargoContext db = new KargoContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                var il = from i in db.Iller select new { i.Id, i.Ad };
 
+                ddlSubeIli.DataSource = il.ToList();
+                ddlSubeIli.DataValueField = "Id";
+                ddlSubeIli.DataTextField = "Ad";
+                ddlSubeIli.DataBind();
+                ddlSubeIli.Items.Insert(0, new ListItem("Bir il seçiniz"));
+                ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+
+            }
         }
 
         protected void btnKargomNerede_Click(object sender, EventArgs e)
@@ -32,10 +43,10 @@ namespace ProjeKargoWebForms
                         if (takip.DurumId == 1)
                         {
                             var sonuc = (from t in db.Takipler
-                                     join a in db.Adresler on t.AdresId equals a.Id
-                                     join ie in db.Ilceler on a.IlceId equals ie.Id
-                                     where t.Id == tid
-                                     select new { ie.Ad }).SingleOrDefault();
+                                         join a in db.Adresler on t.AdresId equals a.Id
+                                         join ie in db.Ilceler on a.IlceId equals ie.Id
+                                         where t.Id == tid
+                                         select new { ie.Ad }).SingleOrDefault();
                             lblTakipSonuc.Text = sonuc.Ad.ToString() + "'da";
                         }
                         else if (takip.DurumId == 3)
@@ -68,6 +79,48 @@ namespace ProjeKargoWebForms
         {
             tbTakipNo.Text = string.Empty;
             lblTakipSonuc.Text = string.Empty;
+        }
+
+        protected void btnSube_Click(object sender, EventArgs e)
+        {
+            var il = ddlSubeIli.SelectedIndex;
+            var ilce = ddlSubeIlce.SelectedIndex;
+            var sube = from s in db.Subeler
+                       join a in db.Adresler on s.AdresId equals a.Id
+                       join i in db.Iller on a.IlId equals i.Id
+                       join ie in db.Ilceler on a.IlceId equals ie.Id
+                       where i.Id == il && ie.Id == ilce
+                       select new { id = s.Id, sube = s.Ad, tel = s.Tel, il = i.Ad, ilce = ie.Ad, mahale = a.Mahalle, sokak = a.Sokak };
+            gvSube.DataSource = sube.ToList();
+            gvSube.DataBind();
+        }
+
+        protected void btnSubeTemizle_Click(object sender, EventArgs e)
+        {
+            clearSube();
+            gvSube.EmptyDataText = "Yeni bir arama yapınız.";
+            gvSube.DataBind();
+        }
+        protected void ddlSubeIli_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSubeIli.SelectedIndex >= 0)
+            {
+                var il = ddlSubeIli.SelectedIndex;
+                var ilce = from ie in db.Ilceler where ie.IlId == il select new { ie.Id, ie.Ad };
+                ddlSubeIlce.DataSource = ilce.ToList();
+                ddlSubeIlce.DataValueField = "Id";
+                ddlSubeIlce.DataTextField = "Ad";
+                ddlSubeIlce.DataBind();
+            }
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+        }
+        private void clearSube()
+        {
+            ddlSubeIli.SelectedIndex = 0;
+            ddlSubeIlce.Items.Clear();
+            ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlSubeIlce.SelectedIndex = 0;
+            gvSube.DataSource = null;
         }
     }
 }

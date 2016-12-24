@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="ProjeKargoWebForms.User" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <table style="width:100%;">
+    <table style="width: 100%;">
         <tr>
             <td>
                 <asp:Label ID="Label1" runat="server" Text="Kargom Nerede?" Font-Bold="True" Font-Size="X-Large"></asp:Label>
@@ -29,6 +29,54 @@
             </td>
             <td>
                 <asp:Label ID="lblTakipSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td class="auto-style1">
+                <asp:Label ID="Label4" runat="server" Text="Bana En Yakın Şube Nerede?" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label5" runat="server" Text="İl:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubeIli" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSubeIli_SelectedIndexChanged"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label9" runat="server" Text="İlçe:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubeIlce" runat="server"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style1"></td>
+            <td>
+                <asp:Button ID="btnSube" runat="server" Text="Sorgula" OnClick="btnSube_Click" OnClientClick="return kontrolSube()" />
+                <asp:Button ID="btnSubeTemizle" runat="server" Text="Temizle" OnClick="btnSubeTemizle_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label25" runat="server" Text="Size En Yakın Şubeler" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+            <td>
+                <asp:GridView ID="gvSube" EmptyDataText="Arama yaptığınız bölgede şubemiz bulunmamaktadır." runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Font-Bold="True" Font-Size="Medium" GridLines="Horizontal" ForeColor="Black">
+                    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+                    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+                    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+                    <SortedDescendingHeaderStyle BackColor="#242121" />
+                </asp:GridView>
             </td>
         </tr>
     </table>
