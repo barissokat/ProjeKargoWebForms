@@ -1,13 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="ProjeKargoWebForms.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:GridView ID="gvKargo" runat="server" OnSelectedIndexChanged="gvKargo_SelectedIndexChanged">
+    <asp:GridView ID="gvKargo" EmptyDataText="Herhangi bir kargo bulunamadı.." runat="server" OnSelectedIndexChanged="gvKargo_SelectedIndexChanged">
         <Columns>
             <asp:ButtonField CommandName="Select" Text="Seç" />
         </Columns>
-        <EmptyDataTemplate>
-            Herhangi bir kargo bulunamadı..
-        </EmptyDataTemplate>
     </asp:GridView>
 
     <table style="width: 100%;">
@@ -273,7 +270,7 @@
         <tr>
             <td>
                 <div style="overflow-x: auto; width: 800px">
-                    <asp:GridView ID="gvSube" runat="server" OnSelectedIndexChanged="gvSube_SelectedIndexChanged">
+                    <asp:GridView ID="gvSube" EmptyDataText="Henüz şube bulunmamaktadır." runat="server" OnSelectedIndexChanged="gvSube_SelectedIndexChanged">
                         <Columns>
                             <asp:ButtonField CommandName="Select" Text="Seç" />
                         </Columns>
@@ -351,6 +348,45 @@
             </td>
             <td>
                 <asp:Label ID="lblSubeSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+        </tr>
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td>
+                <asp:Label ID="Label1" runat="server" Text="Kurye Çağır Tablosu" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <div style="overflow-x: auto; width: 800px">
+                    <asp:GridView ID="gvKuryeCagir" EmptyDataText="Henüz kurye çağıran biri olmamıştır." runat="server" OnSelectedIndexChanged="gvKuryeCagir_SelectedIndexChanged">
+                        <Columns>
+                            <asp:ButtonField CommandName="Select" Text="Seç" />
+                        </Columns>
+                    </asp:GridView>
+                </div>
+            </td>
+            <td class="auto-style1">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label42" runat="server" Text="Yeni Kuryeci"></asp:Label>
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="ddlKuryeciID" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Button ID="btnKuryeciGüncelle" runat="server" Text="Değiştir" OnClick="btnKuryeciGüncelle_Click" />
+                        </td>
+                        <td>
+                            <asp:Label ID="lblsKuryeci" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>

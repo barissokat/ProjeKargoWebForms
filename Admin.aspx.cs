@@ -20,6 +20,7 @@ namespace ProjeKargoWebForms
             {
                 var il = from i in db.Iller select new { i.Id, i.Ad };
                 var durum = from c in db.Durumlar select new { c.Id, c.Ad };
+                var kuryecii = from c in db.Kuryeciler select new { c.Id, c.Ad, c.Soyad };
 
                 ddlGonderenIl.DataSource = il.ToList();
                 ddlGonderenIl.DataValueField = "Id";
@@ -48,8 +49,15 @@ namespace ProjeKargoWebForms
                 ddlSubeIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
                 ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
+                ddlKuryeciID.DataSource = kuryecii.ToList();
+                ddlKuryeciID.DataValueField = "Id";
+                ddlKuryeciID.DataTextField = "Soyad";
+                ddlKuryeciID.DataBind();
+                ddlKuryeciID.Items.Insert(0, new ListItem("Bir kuryeci seçiniz"));
+
                 gvKargoDataBind();
                 gvSubeDataBind();
+                gvKuryeciDataBind();
             }
         }
 
@@ -653,11 +661,65 @@ namespace ProjeKargoWebForms
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             /**/
         }
-
         /*Şube Sonu*/
-        protected void btnKargoEkle_Click(object sender, EventArgs e)
+            
+        private void gvKuryeciDataBind()
         {
-            Response.Redirect("Admins/Kargo.aspx");
+            var kurye = from kc in db.KuryeCagirlar
+                         join ku in db.Kuryeciler on kc.KuryeciId equals ku.Id
+                         join a in db.Adresler on kc.AdresId equals a.Id
+                         join k in db.Kisiler on a.Id equals k.AdresId
+                         join i in db.Iller on a.IlId equals i.Id
+                         join ie in db.Ilceler on a.IlceId equals ie.Id
+                         select new {
+                             kc.Id,
+                             k.Ad,
+                             k.Soyad,
+                             k.Tel,
+                             il = i.Ad,
+                             ilce = ie.Ad,
+                             a.Mahalle,
+                             a.Sokak,
+                             a.Apartman,
+                             a.No,
+                             kuryeci = ku.Ad + " " + ku.Soyad
+                         };
+            gvKuryeCagir.DataSource = kurye.ToList();
+            gvKuryeCagir.DataBind();
+        }
+
+        protected void gvKuryeCagir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedRowIndex = gvKuryeCagir.SelectedIndex;
+            GridViewRow row = gvKuryeCagir.Rows[selectedRowIndex];
+            int kcid = Convert.ToInt32(row.Cells[1].Text);
+            KuryeCagir kuryeCagir = db.KuryeCagirlar.Find(kcid);
+            ddlKuryeciID.SelectedIndex = Convert.ToInt32(kuryeCagir.KuryeciId);
+        }
+
+        protected void btnKuryeciGüncelle_Click(object sender, EventArgs e)
+        {
+            int selectedRowIndex = gvKuryeCagir.SelectedIndex;
+            GridViewRow row = gvKuryeCagir.Rows[selectedRowIndex];
+            try
+            {
+                int kcid = Convert.ToInt32(row.Cells[1].Text);
+                KuryeCagir kuryeCagir = db.KuryeCagirlar.Find(kcid);
+                kuryeCagir.KuryeciId = ddlKuryeciID.SelectedIndex;
+                lblsKuryeci.Text = "Değişim işlemi başarıyla gerçekleşmiştir.";
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                lblsKuryeci.Text = "İşleminiz başarısız olmuştur.";
+            }
+            gvKuryeciDataBind();
+            clearKurye();
+        }
+        private void clearKurye()
+        {
+            gvKuryeCagir.SelectedIndex = -1;
+            ddlKuryeciID.SelectedIndex = 0;
         }
     }
 }
