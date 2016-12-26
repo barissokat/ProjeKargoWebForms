@@ -173,7 +173,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnKurye" runat="server" Text="Çağır" OnClick="btnKurye_Click"/></td>
+                <asp:Button ID="btnKurye" runat="server" Text="Çağır" OnClick="btnKurye_Click" OnClientClick="return kontrolKurye()"/></td>
             <td>
                 <asp:Label ID="lblkcSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
             </td>
@@ -204,6 +204,60 @@
             }
             else if (kddlSubeIlce.selectedIndex <= 0) {
                 mesaj = "Lütfen şube için ilçe seçiniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true
+            else
+                return false
+        }
+        function kontrolKurye() {
+            var ktbKuryeAd = document.getElementById('<%=tbKuryeAd.ClientID%>');
+            var ktbKuryeSoyad = document.getElementById('<%=tbKuryeSoyad.ClientID%>');
+            var ktbKuryeTel = document.getElementById('<%=tbKuryeTel.ClientID%>');
+            var kddlKuryeIl = document.getElementById('<%=ddlKuryeIl.ClientID%>');
+            var kddlKuryeIlce = document.getElementById('<%=ddlKuryeIlce.ClientID%>');
+            var ktbKuryeMah = document.getElementById('<%=tbKuryeMah.ClientID%>');
+            var ktbKuryeSok = document.getElementById('<%=tbKuryeSok.ClientID%>');
+            var ktbKuryeApt = document.getElementById('<%=tbKuryeApt.ClientID%>');
+            var ktbKuryeNo = document.getElementById('<%=tbKuryeNo.ClientID%>');
+            var mesaj = "";
+            if (ktbKuryeAd.value == "") {
+                mesaj = "Lütfen kurye için ad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeSoyad.value == "") {
+                mesaj = "Lütfen kurye için soyad giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeTel.value == "") {
+                mesaj = "Lütfen kurye için tel giriniz.";
+                alert(mesaj);
+            }
+            else if (kddlKuryeIl.selectedIndex <= 0) {
+                mesaj = "Lütfen kurye için il seçiniz.";
+                alert(mesaj);
+            }
+            else if (kddlKuryeIlce.selectedIndex <= 0) {
+                mesaj = "Lütfen kurye için ilce seçiniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeMah.value == "") {
+                mesaj = "Lütfen kurye için mahalle giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeSok.value == "") {
+                mesaj = "Lütfen kurye için sokak giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeApt.value == "") {
+                mesaj = "Lütfen kurye için apartman giriniz.";
+                alert(mesaj);
+            }
+            else if (ktbKuryeNo.value == "") {
+                mesaj = "Lütfen kurye için no giriniz.";
                 alert(mesaj);
             }
             else
