@@ -380,7 +380,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnKuryeciGüncelle" runat="server" Text="Değiştir" OnClick="btnKuryeciGüncelle_Click" />
+                            <asp:Button ID="btnKuryeciGüncelle" runat="server" Text="Değiştir" OnClick="btnKuryeciGüncelle_Click" OnClientClick="return kontrolKuryeci()" />
                         </td>
                         <td>
                             <asp:Label ID="lblsKuryeci" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
@@ -528,29 +528,30 @@
     else
         return false;
 }
+
 function kontrolDurum() {
     var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
-    var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
-    var mesaj = "";
-    if (ktbTakipNo.value == "") {
-        mesaj = "Lütfen durum değişikliği için takip no giriniz.";
-        alert(mesaj);
-        document.getElementById('<%=tbTakipNo.ClientID%>').focus();
-    }
-    else if (kddlDurum.selectedIndex <= 0) {
-        mesaj = "Lütfen kargo için durum seçiniz.";
-        alert(mesaj);
-    }
-    else
-        mesaj = "";
-    if (mesaj == "")
-        return true
-    else
-        return false
-}
+            var kddlDurum = document.getElementById('<%=ddlDurum.ClientID%>');
+            var mesaj = "";
+            if (ktbTakipNo.value == "") {
+                mesaj = "Lütfen durum değişikliği için takip no giriniz.";
+                alert(mesaj);
+                document.getElementById('<%=tbTakipNo.ClientID%>').focus();
+            }
+            else if (kddlDurum.selectedIndex <= 0) {
+                mesaj = "Lütfen kargo için durum seçiniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true;
+            else
+                return false;
+        }
 
-function kontrolSube() {
-    var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
+        function kontrolSube() {
+            var kddlsIl = document.getElementById('<%=ddlSubeIl.ClientID%>');
             var kddlsIlce = document.getElementById('<%=ddlSubeIlce.ClientID%>');
             var ktbsMah = document.getElementById('<%=tbSubeMahalle.ClientID%>');
             var ktbsSok = document.getElementById('<%=tbSubeSokak.ClientID%>');
@@ -584,13 +585,28 @@ function kontrolSube() {
                         mesaj = "Lütfen sube için tel giriniz.";
                         alert(mesaj);
                         document.getElementById('<%=tbSubeTel.ClientID%>').focus();
-                    }
-                    else
-                        mesaj = "";
-    if (mesaj == "")
-        return true
-    else
-        return false
-}
+                            }
+                            else
+                                mesaj = "";
+        if (mesaj == "")
+            return true;
+        else
+            return false;
+    }
+
+    function kontrolKuryeci() {
+        var kddlKuryeciID = document.getElementById('<%=ddlKuryeciID.ClientID%>');
+            var mesaj = "";
+            if (kddlKuryeciID.selectedIndex <= 0) {
+                mesaj = "Lütfen yeni kuryeciyi seçiniz.";
+                alert(mesaj);
+            }
+            else
+                mesaj = "";
+            if (mesaj == "")
+                return true;
+            else
+                return false;
+        }
     </script>
 </asp:Content>
