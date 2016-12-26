@@ -25,6 +25,12 @@ namespace ProjeKargoWebForms
                 ddlSubeIli.Items.Insert(0, new ListItem("Bir il seçiniz"));
                 ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
 
+                ddlKuryeIl.DataSource = il.ToList();
+                ddlKuryeIl.DataValueField = "Id";
+                ddlKuryeIl.DataTextField = "Ad";
+                ddlKuryeIl.DataBind();
+                ddlKuryeIl.Items.Insert(0, new ListItem("Bir il seçiniz"));
+                ddlKuryeIlce.Items.Insert(0, new ListItem("Bir il seçiniz"));
             }
         }
 
@@ -121,6 +127,81 @@ namespace ProjeKargoWebForms
             ddlSubeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
             ddlSubeIlce.SelectedIndex = 0;
             gvSube.DataSource = null;
+        }
+
+        protected void btnKurye_Click(object sender, EventArgs e)
+        {
+            Kisi Kisi = new Kisi();
+            Adres Adres = new Adres();
+            KuryeCagir KuryeCagir = new KuryeCagir();
+            Il Il = new Il();
+            Ilce Ilce = new Ilce();
+            try
+            {
+                var il = ddlKuryeIl.SelectedIndex;
+                var ilce = ddlKuryeIlce.SelectedItem.Text.ToString();
+                Il = db.Iller.Find(il);
+                Ilce = (from i in db.Iller
+                        join ie in db.Ilceler on i.Id equals ie.IlId
+                        where ie.IlId == il && ie.Ad == ilce
+                        select ie).SingleOrDefault();
+                Adres.IlId = il;
+                Adres.IlceId = Ilce.Id;
+                Adres.Mahalle = tbKuryeMah.Text;
+                Adres.Sokak = tbKuryeSok.Text;
+                Adres.No = tbKuryeNo.Text;
+                Adres.Apartman = tbKuryeApt.Text;
+                db.Adresler.Add(Adres);
+
+                Kisi.AdresId = Adres.Id;
+                Kisi.Ad = tbKuryeAd.Text;
+                Kisi.Soyad = tbKuryeSoyad.Text;
+                Kisi.Tel = tbKuryeTel.Text;
+                db.Kisiler.Add(Kisi);
+
+                Random rndm = new Random();
+                int kid = rndm.Next(1, 6);
+
+                KuryeCagir.AdresId = Adres.Id;
+                KuryeCagir.KuryeciId = kid;
+                db.KuryeCagirlar.Add(KuryeCagir);
+
+                db.SaveChanges();
+                lblkcSonuc.Text = "Kuryeniz kısa bir süre içinde gönderilecektir.";
+            }
+            catch (Exception)
+            {
+                lblkcSonuc.Text = "İşleminiz gerçekleştirilemedi.";
+            }
+            clearKurye();
+        }
+
+        protected void ddlKuryeIl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlKuryeIl.SelectedIndex >= 0)
+            {
+                var sec = ddlKuryeIl.SelectedIndex;
+                var ilce = from ie in db.Ilceler where ie.IlId == sec select new { ie.IlId, ie.Ad };
+                ddlKuryeIlce.DataSource = ilce.ToList();
+                ddlKuryeIlce.DataValueField = "IlId";
+                ddlKuryeIlce.DataTextField = "Ad";
+                ddlKuryeIlce.DataBind();
+            }
+            ddlKuryeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+        }
+        private void clearKurye()
+        {
+            tbKuryeAd.Text = string.Empty;
+            tbKuryeSoyad.Text = string.Empty;
+            tbKuryeTel.Text = string.Empty;
+            ddlKuryeIl.SelectedIndex = 0;
+            ddlKuryeIlce.Items.Clear();
+            ddlKuryeIlce.Items.Insert(0, new ListItem("Bir ilçe seçiniz"));
+            ddlKuryeIlce.SelectedIndex = 0;
+            tbKuryeMah.Text = string.Empty;
+            tbKuryeSok.Text = string.Empty;
+            tbKuryeApt.Text = string.Empty;
+            tbKuryeNo.Text = string.Empty;
         }
     }
 }

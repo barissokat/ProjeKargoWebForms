@@ -80,6 +80,105 @@
             </td>
         </tr>
     </table>
+    <table style="width:100%;">
+        <tr>
+            <td class="auto-style1">
+                <asp:Label ID="Label11" runat="server" Text="Kurye Çağır!" Font-Bold="True" Font-Size="X-Large"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td class="auto-style1">
+                <asp:Label ID="Label16" runat="server" Text="Kişi"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label12" runat="server" Text="Ad:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeAd" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label17" runat="server" Text="Soyad:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeSoyad" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label19" runat="server" Text="Tel:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeTel" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style1">
+                <asp:Label ID="Label21" runat="server" Text="Adres"></asp:Label>
+            </td>
+            <td class="auto-style1"></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label22" runat="server" Text="İl:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlKuryeIl" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlKuryeIl_SelectedIndexChanged"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label13" runat="server" Text="İlçe:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlKuryeIlce" runat="server"></asp:DropDownList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label14" runat="server" Text="Mahalle:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeMah" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label15" runat="server" Text="Sokak:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeSok" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label23" runat="server" Text="Apatman:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeApt" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="Label24" runat="server" Text="No:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="tbKuryeNo" runat="server"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Button ID="btnKurye" runat="server" Text="Çağır" OnClick="btnKurye_Click"/></td>
+            <td>
+                <asp:Label ID="lblkcSonuc" runat="server" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            </td>
+        </tr>
+    </table>
     <script type="text/javascript">
         function kontrolKargo() {
             var ktbTakipNo = document.getElementById('<%=tbTakipNo.ClientID%>');
